@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: fondo
+    uniqueID: 91025035
+    locked: 0
+  - name: decoraciones
+    uniqueID: 1466065701
+    locked: 0
+  - name: Plataformas
+    uniqueID: 2216621753
+    locked: 0
