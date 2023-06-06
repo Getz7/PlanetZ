@@ -65,3 +65,6 @@ TagManager:
   - name: Puertas
     uniqueID: 3014060999
     locked: 0
+  - name: Salida
+    uniqueID: 2159729329
+    locked: 0
