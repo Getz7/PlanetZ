@@ -50,3 +50,6 @@ TagManager:
   - name: Plataformas
     uniqueID: 2216621753
     locked: 0
+  - name: picos
+    uniqueID: 57740505
+    locked: 0
