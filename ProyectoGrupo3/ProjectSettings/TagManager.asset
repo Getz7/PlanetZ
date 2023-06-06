@@ -53,3 +53,15 @@ TagManager:
   - name: picos
     uniqueID: 57740505
     locked: 0
+  - name: Fake Plats
+    uniqueID: 2466928949
+    locked: 0
+  - name: Plat Movible
+    uniqueID: 1914159951
+    locked: 0
+  - name: llave
+    uniqueID: 2876644117
+    locked: 0
+  - name: Puertas
+    uniqueID: 3014060999
+    locked: 0
