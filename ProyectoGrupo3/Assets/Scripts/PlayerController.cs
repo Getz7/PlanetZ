@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
         _rig.velocity = new Vector2(horizontalMove * _runSpeed, _rig.velocity.y);
         _animator.SetFloat("runSpeed", Mathf.Abs(horizontalMove));
 
-        if (horizontalMove > 0 && _facingRight == true)
+        if (horizontalMove < 0 && _facingRight == true)
         {
             Flip();
         }
-        if (horizontalMove < 0 && _facingRight == false)
+        if (horizontalMove > 0 && _facingRight == false)
         {
             Flip();
         }
@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
     }
     void Flip()
     {
+        Debug.Log("Se ejecuto el flip");
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         _facingRight = !_facingRight;
     }

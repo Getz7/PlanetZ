@@ -3,19 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gameplay
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gameplay
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Interact
+  - Enemy
+  - PlayerBullet
+  - EnemyBullet
   - 
   - 
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: decoraciones
     uniqueID: 1466065701
+    locked: 0
+  - name: player
+    uniqueID: 435662035
     locked: 0
   - name: Plataformas
     uniqueID: 2216621753
