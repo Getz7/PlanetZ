@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Punch();
+            Debug.Log("Impacte");
         }
        
         if (Input.GetMouseButtonDown(1) && _canSpecial)
