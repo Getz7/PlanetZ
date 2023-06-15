@@ -5,8 +5,6 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     [SerializeField] private bool isSpecial;
-
-
     protected virtual void Update()
     {
         if (isSpecial)

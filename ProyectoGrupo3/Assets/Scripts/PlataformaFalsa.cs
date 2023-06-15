@@ -6,8 +6,6 @@ public class PlataformaFalsa : MonoBehaviour
 {
 
     Rigidbody2D rb;
-
-    // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
