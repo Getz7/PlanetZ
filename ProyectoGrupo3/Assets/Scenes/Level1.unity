@@ -97341,8 +97341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e17e9daa3af3594c8aa9d770cc93796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 0
-  seg: 10
+  min: 1
+  seg: 0
   tiempo: {fileID: 1005738004}
 --- !u!1001 &2114903355
 PrefabInstance:
