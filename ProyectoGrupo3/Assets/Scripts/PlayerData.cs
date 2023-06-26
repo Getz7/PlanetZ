@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Color> colorKeys = new List<Color>();
+
+    private void Start()
     {
-        
+        EventManager.Instance.OnDoorOpened += ResetKeys;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool HasColorKey(Color color)
     {
-        
+        return colorKeys.Contains(color);
+    }
+
+    public void AddColorKey(Color color)
+    {
+        if (!HasColorKey(color))
+        {
+            colorKeys.Add(color);
+        }
+    }
+
+    private void ResetKeys()
+    {
+        colorKeys.Clear();
     }
 }
