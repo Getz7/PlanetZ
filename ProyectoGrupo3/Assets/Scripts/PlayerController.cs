@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-              
+               
                     JumpSpecial();
        
 
@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
 
     void JumpSpecial()
     {
+        Debug.Log("Salto especial");
         Jump();
         isStomping = true;
         StartCoroutine(StumpJump());
