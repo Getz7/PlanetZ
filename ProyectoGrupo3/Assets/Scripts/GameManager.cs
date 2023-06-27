@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     private int contadorEnemies = 0;
     private PlayerController player;
 
+    
+
+
+
+
 
     private void Start()
     {
@@ -15,6 +20,14 @@ public class GameManager : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController>();
         }
+
+       
+
+
+        
+
+
+
     }
 
 

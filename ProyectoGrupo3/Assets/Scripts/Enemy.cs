@@ -2,38 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//Producto
-public abstract class Enemy 
+public abstract class Enemy : MonoBehaviour
 {
-    private int hp;
-    private int dmg;
-    private string type;
-    private float speed;
+    // common propperties
+    public int hp { get; set; }
+    public int dmg { get; set; }
+    public float speed { get; set; }
 
-    private Sprite model;
 
-    public Enemy(int _hp, int _dmg, string _type, float _speed, Sprite _model)
+   
+
+  
+   
+
+    
+
+
+    public abstract void UpdateEnemy();
+    public abstract void DrawEnemy();
+
+    public abstract void Attack();
+    
+
+
+    protected void TakeDmg(int dmg)
     {
-        hp = _hp;
-        dmg = _dmg;
-        type = _type;
-        speed = _speed;
-        model = _model;
+
     }
 
-    public Enemy(int _hp, int _dmg, string _type, float _speed)
+    protected void Die()
     {
-        hp = 0;
-        dmg = 0;
-        type = "";
-        speed = 0;
-        
-    }
-
-    public Enemy()
-    {
-      
 
     }
 }
