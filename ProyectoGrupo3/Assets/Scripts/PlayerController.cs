@@ -4,8 +4,13 @@ using UnityEngine;
 //using UnityEditor.Animations;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerController : MonoBehaviour
 {
+    private ICommand _jumpCommand;
+    private ICommand _stompCommand;
+    private ICommand _jumpSpecialCommand;
+
     //Variables
     public float tiempoTranscurrido = 0f;
     [SerializeField] private Rigidbody2D _rig;
@@ -30,6 +35,13 @@ public class PlayerController : MonoBehaviour
     private float originalGravity;
     public string escenaActual;
     public bool isStomping = false;
+    private void Awake()
+    {
+
+        _jumpCommand = new JumpCommand(this);
+   
+        _jumpSpecialCommand = new SpecialJumpCommand(this);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +56,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ControladorMovimiento();
+      
+       ControladorAtaques();
+       ControladorComandos();
+    }
+
+    private void ControladorMovimiento()
+    {
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         _rig.velocity = new Vector2(horizontalMove * _runSpeed, _rig.velocity.y);
         _animator.SetFloat("runSpeed", Mathf.Abs(horizontalMove));
@@ -56,53 +76,39 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
-        _grounded = Physics2D.OverlapCircle(_groundCheck.position, _groundRadius, _LayerGround);
-        _animator.SetBool("grounded", _grounded);
-        if (Input.GetButtonUp("Jump") && _grounded == true)
-        {
+    }
 
-            if (_timer < 3f)
-            {
-                Jump();
-                StartCoroutine(RegresaralSuelo());
-            }
-            else
-            {
-               
-                    JumpSpecial();
-       
+   
 
-            }
-            _timer = 0;
-        }
-
-
-
-
-
-        if (Input.GetButton("Jump") && _grounded == true)
-        {
-
-            _timer = _timer + Time.deltaTime;
-        }
-
-        //Debug.Log(_timer);
-
-
+    private void ControladorAtaques()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             Punch();
             Debug.Log("Impacte");
         }
-       
+
         if (Input.GetMouseButtonDown(1) && _canSpecial)
         {
             _canSpecial = false;
-           
             _animator.SetBool("SpecialAttack", false);
-
         }
     }
+
+    private void ControladorComandos()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Salto");
+            ExecuteCommand(_jumpCommand);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightControl))
+        {
+            Debug.Log("Salto Especial");
+            ExecuteCommand(_jumpSpecialCommand);
+        }
+    }
+
     IEnumerator RegresaralSuelo()
     {
         yield return new WaitForSeconds(0.1f);
@@ -141,14 +147,14 @@ public class PlayerController : MonoBehaviour
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         _facingRight = !_facingRight;
     }
-    void Jump()
+    public void Jump()
     {
        
         _animator.SetBool("Jump", true);
         _rig.velocity = Vector2.up * _jumpForce;
     }
 
-    void JumpSpecial()
+    public void JumpSpecial()
     {
         Debug.Log("Salto especial");
         Jump();
@@ -156,12 +162,17 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(StumpJump());
     }
 
-    IEnumerator StumpJump()
+    public IEnumerator StumpJump()
     {
         yield return new WaitForSeconds(_stumpTimer);
         _rig.velocity = Vector2.down * _jumpForce * 2;
         yield return new WaitForSeconds(1f);
         isStomping = false;
+    }
+    public void ExecuteCommand(ICommand command)
+    {
+        command.Execute();
+        
     }
     void Punch()
     {
