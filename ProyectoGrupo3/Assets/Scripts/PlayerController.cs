@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private ICommand _jumpCommand;
-    private ICommand _stompCommand;
     private ICommand _jumpSpecialCommand;
     //Variables
     [SerializeField] public float tiempoTranscurrido = 0f;
