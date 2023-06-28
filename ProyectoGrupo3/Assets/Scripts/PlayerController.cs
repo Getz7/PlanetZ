@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
     private ICommand _jumpCommand;
     private ICommand _stompCommand;
     private ICommand _jumpSpecialCommand;
-
     //Variables
-    public float tiempoTranscurrido = 0f;
+    [SerializeField] public float tiempoTranscurrido = 0f;
+    [SerializeField] public float jumpCooldown = 0.5f;
+    [SerializeField] private float jumpTimer = 0f;
     [SerializeField] private Rigidbody2D _rig;
     [SerializeField] private float _runSpeed = 40f;
-    [SerializeField] private bool _grounded;
+    [SerializeField] private bool _grounded = true;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundRadius = 0.5f;
     [SerializeField] private float _punchRadius = 0.5f;
@@ -56,10 +57,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ControladorMovimiento();
-      
+        ControladorTiempoSalto();
+       ControladorMovimiento();
        ControladorAtaques();
        ControladorComandos();
+    }
+    private void ControladorTiempoSalto()
+    {
+        if (!_grounded)
+        {
+            jumpTimer -= Time.deltaTime;
+            if (jumpTimer <= 0f)
+            {
+                _grounded = true;
+            }
+        }
     }
 
     private void ControladorMovimiento()
@@ -108,19 +120,6 @@ public class PlayerController : MonoBehaviour
             ExecuteCommand(_jumpSpecialCommand);
         }
     }
-
-    IEnumerator RegresaralSuelo()
-    {
-        yield return new WaitForSeconds(0.1f);
-        if (!_grounded)
-        {
-            _animator.SetBool("Jump", true);
-        }
-        else
-        {
-            _animator.SetBool("Jump", false);
-        }
-    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(_groundCheck.position, _groundRadius);
@@ -149,9 +148,14 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
-       
-        _animator.SetBool("Jump", true);
-        _rig.velocity = Vector2.up * _jumpForce;
+
+        if (_grounded)
+        {
+            _animator.SetBool("Jump", true);
+            _rig.velocity = Vector2.up * _jumpForce;
+            _grounded = false;
+            jumpTimer = jumpCooldown;
+        }
     }
 
     public void JumpSpecial()
