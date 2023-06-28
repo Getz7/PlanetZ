@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-public class Enemy_Factory : MonoBehaviour
+
+[CreateAssetMenu(fileName = "Enemy", menuName = "ScriptableObject/Enemies", order = 1)]
+public class NewEnemy : ScriptableObject
 {
     //Lista para guardar los enemigos creados
     [SerializeField] private Enemy[] _Enemies;
@@ -24,7 +25,7 @@ public class Enemy_Factory : MonoBehaviour
     }
 
 
-    public Enemy CreateEnemy(string enemyType, Vector2 position)
+    public Enemy GetEnemyPrefabByType(string enemyType)
     {
         Enemy enemy;
 
@@ -32,17 +33,6 @@ public class Enemy_Factory : MonoBehaviour
         {
             throw new ArgumentException("Invalid enemy type: " + enemyType);
         }
-       
-        return Instantiate(enemy, position, Quaternion.identity);
-
+        return Instantiate(enemy);
     }
-
-   
-   
-    
-        
-
-      
-
-    
 }

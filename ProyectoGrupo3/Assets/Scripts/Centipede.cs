@@ -6,11 +6,12 @@ public class Centipede : Enemy
 {
     public Centipede()
     {
-        hp = 5;
-        dmg = 3;
-        speed = 1f;
-        
+        _hp = 5;
+        _dmg = 3;
+        _speed =1f;
+
     }
+
 
     public override void DrawEnemy()
     {

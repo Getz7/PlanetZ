@@ -7,9 +7,9 @@ public class BigBloated : Enemy
 
     public BigBloated()
     {
-        hp = 8;
-        dmg = 5;
-        speed = 0.7f;
+        _hp = 8;
+        _dmg = 5;
+        _speed = 0.7f;
         
     }
     public override void DrawEnemy()
