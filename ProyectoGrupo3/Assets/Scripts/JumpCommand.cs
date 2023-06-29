@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// JumpCommand.cs
+// Concrete Command
 
 public class JumpCommand : ICommand
 {

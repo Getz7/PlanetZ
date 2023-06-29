@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// Concrete Command
 
 public class SpecialJumpCommand : ICommand
 {

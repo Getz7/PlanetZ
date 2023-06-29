@@ -4,6 +4,8 @@ using UnityEngine;
 //using UnityEditor.Animations;
 using UnityEngine.SceneManagement;
 
+//receiver
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -37,11 +39,18 @@ public class PlayerController : MonoBehaviour
     public bool isStomping = false;
     private void Awake()
     {
-
         _jumpCommand = new JumpCommand(this);
-   
         _jumpSpecialCommand = new SpecialJumpCommand(this);
+
+        // Get reference to the PlayerInputHandler and set the commands
+        PlayerInputHandler inputHandler = FindObjectOfType<PlayerInputHandler>();
+        if (inputHandler != null)
+        {
+            inputHandler.SetJumpCommand(_jumpCommand);
+            inputHandler.SetSpecialJumpCommand(_jumpSpecialCommand);
+        }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +68,7 @@ public class PlayerController : MonoBehaviour
         ControladorTiempoSalto();
        ControladorMovimiento();
        ControladorAtaques();
-       ControladorComandos();
+     
     }
     private void ControladorTiempoSalto()
     {
@@ -106,19 +115,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ControladorComandos()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Salto");
-            ExecuteCommand(_jumpCommand);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightControl))
-        {
-            Debug.Log("Salto Especial");
-            ExecuteCommand(_jumpSpecialCommand);
-        }
-    }
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(_groundCheck.position, _groundRadius);
@@ -150,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
         if (_grounded)
         {
+            Debug.Log("Salto");
             _animator.SetBool("Jump", true);
             _rig.velocity = Vector2.up * _jumpForce;
             _grounded = false;
