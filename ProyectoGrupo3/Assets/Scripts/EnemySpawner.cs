@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
       
         _enemyFac.CreateEnemy("BigBloated", new Vector2(30, -78));
 
+        _enemyFac.CreateEnemy("BigBloated", new Vector2(45, -78));
+
 
 
     }
