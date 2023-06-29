@@ -5,5 +5,5 @@ using UnityEngine;
 //observador
 public interface IObserver
 {
-    void Update(ISubject subject);
+    void Updated(ISubject subject);
 }

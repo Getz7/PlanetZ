@@ -8,6 +8,8 @@ public class EventManager : MonoBehaviour, ISubject
     private static EventManager instance;
     private List<IObserver> observers = new List<IObserver>();
     public Color CollectedKeyColor { get; private set; }
+    public event Action<Color> OnKeyCollected;
+    public event Action OnDoorOpened;
 
     public void RegisterObserver(IObserver observer)
     {
@@ -29,7 +31,7 @@ public class EventManager : MonoBehaviour, ISubject
     {
         foreach (IObserver observer in observers)
         {
-            observer.Update(this);
+            observer.Updated(this);
         }
     }
 
@@ -52,8 +54,7 @@ public class EventManager : MonoBehaviour, ISubject
         }
     }
 
-    public event Action<Color> OnKeyCollected;
-    public event Action OnDoorOpened;
+    
 
     public void KeyCollected(Color color)
     {

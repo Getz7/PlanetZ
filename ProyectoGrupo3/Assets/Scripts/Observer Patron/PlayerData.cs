@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 //Observador Concreto
 
-public class PlayerData : MonoBehaviour
+public class PlayerData : MonoBehaviour, IObserver
 {
     public List<Color> colorKeys = new List<Color>();
 
     private void Start()
     {
-
+        EventManager.Instance.RegisterObserver(this);
         EventManager.Instance.OnDoorOpened += ResetKeys;
     }
+
     public void Updated(ISubject subject)
     {
         if (subject is EventManager eventManager)
