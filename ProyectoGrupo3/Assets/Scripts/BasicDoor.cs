@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class BasicDoor : MonoBehaviour
 {
@@ -40,10 +40,8 @@ public class BasicDoor : MonoBehaviour
 
     private void OpenDoor()
     {
-    
         EventManager.Instance.DoorOpened();
 
-       
         foreach (Vector3Int doorTilePosition in doorTilemap.cellBounds.allPositionsWithin)
         {
             if (doorTilemap.HasTile(doorTilePosition))
@@ -52,10 +50,8 @@ public class BasicDoor : MonoBehaviour
             }
         }
 
-      
         transform.Translate(Vector3.down * moveDistance);
 
         isOpen = true;
     }
-
 }

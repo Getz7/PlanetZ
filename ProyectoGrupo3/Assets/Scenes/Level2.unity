@@ -12549,6 +12549,7 @@ GameObject:
   - component: {fileID: 426757760}
   - component: {fileID: 426757759}
   - component: {fileID: 426757766}
+  - component: {fileID: 426757767}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -12590,6 +12591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempoTranscurrido: 0
+  jumpCooldown: 0.5
+  jumpTimer: 0
   _rig: {fileID: 426757761}
   _runSpeed: 8
   _grounded: 0
@@ -12756,6 +12759,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorKeys: []
+--- !u!114 &426757767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426757758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290ae89c01aaeca49abf077747425466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444143122
 GameObject:
   m_ObjectHideFlags: 0
