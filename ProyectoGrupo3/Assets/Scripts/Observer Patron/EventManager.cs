@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-//Sujeto Concreto
+//SUJETO CONCRETO
 
 public class EventManager : MonoBehaviour, ISubject
 {

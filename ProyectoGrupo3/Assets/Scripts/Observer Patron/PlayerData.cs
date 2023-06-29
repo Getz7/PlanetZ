@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Observador Concreto
+//OBSERVADOR CONCRETO
 
 public class PlayerData : MonoBehaviour, IObserver
 {

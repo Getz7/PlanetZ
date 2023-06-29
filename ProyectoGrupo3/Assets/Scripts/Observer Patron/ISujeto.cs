@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Sujeto
+//SUJETO
 public interface ISubject
 {
     void RegisterObserver(IObserver observer);
