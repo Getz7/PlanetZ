@@ -7,6 +7,7 @@ public class EventManager : MonoBehaviour, ISubject
 {
     private static EventManager instance;
     private List<IObserver> observers = new List<IObserver>();
+    public Color CollectedKeyColor { get; private set; }
 
     public void RegisterObserver(IObserver observer)
     {
@@ -56,7 +57,9 @@ public class EventManager : MonoBehaviour, ISubject
 
     public void KeyCollected(Color color)
     {
+        CollectedKeyColor = color; 
         OnKeyCollected?.Invoke(color);
+        NotifyObservers();
     }
 
     public void DoorOpened()

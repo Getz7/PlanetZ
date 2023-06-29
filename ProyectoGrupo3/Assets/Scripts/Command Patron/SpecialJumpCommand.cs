@@ -19,6 +19,6 @@ public class SpecialJumpCommand : ICommand
 
     public void Undo()
     {
-        // Undo logic if needed
+        
     }
 }

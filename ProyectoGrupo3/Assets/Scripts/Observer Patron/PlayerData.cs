@@ -9,7 +9,16 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
+
         EventManager.Instance.OnDoorOpened += ResetKeys;
+    }
+    public void Updated(ISubject subject)
+    {
+        if (subject is EventManager eventManager)
+        {
+
+            Debug.Log("Key collected! Color: " + eventManager.CollectedKeyColor);
+        }
     }
 
     public bool HasColorKey(Color color)
@@ -25,8 +34,10 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+
     private void ResetKeys()
     {
         colorKeys.Clear();
     }
+
 }
