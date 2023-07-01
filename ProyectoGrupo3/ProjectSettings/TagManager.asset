@@ -72,3 +72,6 @@ TagManager:
   - name: Salida
     uniqueID: 2159729329
     locked: 0
+  - name: Monedas
+    uniqueID: 4132153597
+    locked: 0
