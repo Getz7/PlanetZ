@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class TimeController : MonoBehaviour
 
 {
@@ -30,7 +31,7 @@ public class TimeController : MonoBehaviour
             if(restante < 1)
             {
                 enMarcha = false;
-                // Matar al jugador
+                SceneManager.LoadScene("Perdida");
             }
             int tempMin = Mathf.FloorToInt(restante / 60);
             int tempSeg = Mathf.FloorToInt(restante % 60);

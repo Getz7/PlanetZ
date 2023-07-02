@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private float originalGravity;
     public string escenaActual;
     public bool isStomping = false;
+    AudioClip playerAudio;
     private void Awake()
     {
         _jumpCommand = new JumpCommand(this);
@@ -82,6 +83,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private bool isPlaying = false; // Variable para controlar si el sonido está reproduciéndose o no
+
     private void ControladorMovimiento()
     {
         float horizontalMove = Input.GetAxisRaw("Horizontal");
@@ -91,10 +94,28 @@ public class PlayerController : MonoBehaviour
         if (horizontalMove < 0 && _facingRight == true)
         {
             Flip();
+            if (!isPlaying)
+            {
+                ControladorSonidos.Instance.PlayerSound();
+                isPlaying = true;
+            }
         }
-        if (horizontalMove > 0 && _facingRight == false)
+        else if (horizontalMove > 0 && _facingRight == false)
         {
             Flip();
+            if (!isPlaying)
+            {
+                ControladorSonidos.Instance.PlayerSound();
+                isPlaying = true;
+            }
+        }
+        else if (horizontalMove == 0)
+        {
+            if (isPlaying)
+            {
+                ControladorSonidos.Instance.StopPlayerSound();
+                isPlaying = false;
+            }
         }
     }
 
@@ -152,6 +173,7 @@ public class PlayerController : MonoBehaviour
             _rig.velocity = Vector2.up * _jumpForce;
             _grounded = false;
             jumpTimer = jumpCooldown;
+            ControladorSonidos.Instance.PlayerJump();
         }
     }
 
