@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1732840307143544490}
   - component: {fileID: -5409185255631705149}
   - component: {fileID: -5822432722631082071}
-  - component: {fileID: 8041580012209492658}
   - component: {fileID: -1965727548080410542}
   - component: {fileID: -365908581486048566}
   - component: {fileID: -2049974568763613776}
+  - component: {fileID: -8951283444307805263}
   m_Layer: 0
   m_Name: Centipede
   m_TagString: Untagged
@@ -129,27 +129,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3585854, y: 0.6308975}
   m_EdgeRadius: 0
---- !u!50 &8041580012209492658
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8841041065240404661}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &-1965727548080410542
 Animator:
   serializedVersion: 5
@@ -160,7 +139,7 @@ Animator:
   m_GameObject: {fileID: 8841041065240404661}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1cc9befbc9d597042a7790857087cb3d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 545388e0b30615b4c82477a9e65e5f96, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -197,3 +176,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 1
+--- !u!114 &-8951283444307805263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841041065240404661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c138372fc38a54b80dc5702f5f78d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftEdge: {fileID: 0}
+  rightEdge: {fileID: 0}
+  enemy: {fileID: 0}
+  speed: 0
+  anim: {fileID: 0}
