@@ -15,6 +15,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Enemy")]
     //El enemigo como tal
     [SerializeField] private Transform enemy ;
+    [SerializeField] private Enemy[] enemies;
 
     [Header("Movement Parameter")]
     // Velocidad 
@@ -29,8 +30,7 @@ public class EnemyPatrol : MonoBehaviour
     private void Awake()
     {
         initScale = enemy.localScale;
-        leftEdge.parent = null;
-        rightEdge.parent = null;
+       
     }
 
    

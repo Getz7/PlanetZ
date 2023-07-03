@@ -5,17 +5,13 @@ using UnityEngine;
 public class Centipede : Enemy
 {
 
-    
     public Centipede()
     {
         
 
     }
 
-    private void Awake()
-    {
-        
-    }
+    
 
     public  virtual void TakeDamage(float _damage)
     {

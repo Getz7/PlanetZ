@@ -11,6 +11,8 @@ public class Enemy_Factory : MonoBehaviour
     //Diccionario para mapear los enemigos en caso de crear nuevos enemigos
     private Dictionary<string, Enemy> _TypeToEnemy;
 
+    private GameObject leftEdge, RightEdge;
+
 
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class Enemy_Factory : MonoBehaviour
         return Instantiate(enemy, position, Quaternion.identity);
 
     }
+
+   
 
    
    

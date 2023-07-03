@@ -90,10 +90,13 @@ public class PlayerController : MonoBehaviour
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         _rig.velocity = new Vector2(horizontalMove * _runSpeed, _rig.velocity.y);
         _animator.SetFloat("runSpeed", Mathf.Abs(horizontalMove));
+        
 
         if (horizontalMove < 0 && _facingRight == true)
         {
+            
             Flip();
+            
             if (!isPlaying)
             {
                 ControladorSonidos.Instance.PlayerSound();
@@ -102,7 +105,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (horizontalMove > 0 && _facingRight == false)
         {
+
             Flip();
+            
             if (!isPlaying)
             {
                 ControladorSonidos.Instance.PlayerSound();
@@ -111,12 +116,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (horizontalMove == 0)
         {
+            
             if (isPlaying)
             {
                 ControladorSonidos.Instance.StopPlayerSound();
                 isPlaying = false;
             }
         }
+        _animator.SetBool("move", horizontalMove != 0);
     }
 
    
@@ -133,6 +140,7 @@ public class PlayerController : MonoBehaviour
         {
             _canSpecial = false;
             _animator.SetBool("SpecialAttack", false);
+            
         }
     }
 
@@ -170,6 +178,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Salto");
             _animator.SetBool("Jump", true);
+            
             _rig.velocity = Vector2.up * _jumpForce;
             _grounded = false;
             jumpTimer = jumpCooldown;
@@ -239,4 +248,6 @@ public class PlayerController : MonoBehaviour
         _canSpecial = true;
         _animator.SetBool("SpecialAttack", true);
     }
+
+  
 }
