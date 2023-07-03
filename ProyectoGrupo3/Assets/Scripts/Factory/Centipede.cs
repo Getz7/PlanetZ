@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Centipede : Enemy
 {
+
+    
     public Centipede()
     {
-        _hp = 5;
-        _dmg = 3;
-        _speed =1f;
+        
 
+    }
+
+    private void Awake()
+    {
+        
+    }
+
+    public  virtual void TakeDamage(float _damage)
+    {
+        
     }
 
 
@@ -24,6 +34,7 @@ public class Centipede : Enemy
 
     public override void UpdateEnemy()
     {
+
        
     }
   

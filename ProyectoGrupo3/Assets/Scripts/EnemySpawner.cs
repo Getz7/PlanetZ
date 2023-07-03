@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     
     [SerializeField] private Enemy_Factory _enemyFac;
+    private GameObject patrol;
 
     
     
@@ -13,14 +14,16 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
-        
-        //LLamamos a la factoria para crear los enemigos 
-        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
-      
-        _enemyFac.CreateEnemy("BigBloated", new Vector2(30, -78));
 
-        _enemyFac.CreateEnemy("BigBloated", new Vector2(45, -78));
+
+        //LLamamos a la factoria para crear los enemigos 
+        
+
+        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
+
+
+
+
 
 
 

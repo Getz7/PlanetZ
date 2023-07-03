@@ -33,13 +33,14 @@ public abstract class Enemy : MonoBehaviour
     public abstract void DrawEnemy();
 
     public abstract void Attack();
-    
 
 
-    protected void TakeDmg(int dmg)
+
+    public  void TakeDmg()
     {
 
     }
+    
 
     protected void Die()
     {
