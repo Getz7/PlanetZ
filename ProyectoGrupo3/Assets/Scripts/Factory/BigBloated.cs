@@ -22,7 +22,7 @@ public class BigBloated : Enemy
         
     }
 
-    public override void UpdateEnemy()
+    public override void Move()
     {
 
     }

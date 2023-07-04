@@ -28,7 +28,7 @@ public class Centipede : Enemy
 
     }
 
-    public override void UpdateEnemy()
+    public override void Move()
     {
 
        

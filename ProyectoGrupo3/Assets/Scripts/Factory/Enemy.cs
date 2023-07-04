@@ -29,7 +29,7 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
-    public abstract void UpdateEnemy();
+    public abstract void Move();
     public abstract void DrawEnemy();
 
     public abstract void Attack();
