@@ -5,41 +5,47 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 
-    [SerializeField] private float startingHP;
+   
+    public PlayerController player;
+
+    protected GameManager gm;
+    [SerializeField] public float _EHealthPoints;
     private float currentHP;
     private Animator anim;
     private bool dead;
     // Start is called before the first frame update
     private void Awake()
     {
-        currentHP = startingHP;
-        anim = GetComponent<Animator>();
+     
+        if (FindObjectOfType<PlayerController>() != null)
+        {
+            player = FindObjectOfType<PlayerController>();
+        }
+        if (FindObjectOfType<GameManager>() != null)
+        {
+            gm = FindObjectOfType<GameManager>();
+        }
+
+        if (TryGetComponent(out Animator animator))
+        {
+            anim = animator;
+        }
     }
-
-    private  void TakeDamage(float _damage)
+    public virtual void EnemyHurt(float damageAmount)
     {
-        currentHP = Mathf.Clamp(currentHP - _damage, 0, startingHP);
-
-        if (currentHP > 0)
+        _EHealthPoints -= damageAmount;
+        if (_EHealthPoints <= 0)
         {
+            Debug.Log("Enemigo Destruido");
+            FindObjectOfType<GameManager>().EnemigoDestruido();
 
-            //Player hurt
+            Invoke("Desactivar", 0.1f);
+
+
         }
-        else
-        {
-            if(!dead)
-            {
-
-                if(GetComponentInParent<EnemyPatrol>() !=null)
-                //Player dead
-                GetComponentInParent<EnemyPatrol>().enabled = false;
-
-                if(GetComponent<Centipede>()!=null)
-                GetComponent<Centipede>().enabled = false;
-                dead = true;
-            }
-
-            
-        }
+    }
+    public void Desactivar()
+    {
+        this.gameObject.SetActive(false);
     }
 }

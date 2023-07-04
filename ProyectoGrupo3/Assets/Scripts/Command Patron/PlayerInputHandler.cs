@@ -33,6 +33,8 @@ public class PlayerInputHandler : MonoBehaviour
                 _presionada = true;
                 _PressTime = Time.time;
                 _jumpCommand?.Execute();
+
+
             }
         }
     }

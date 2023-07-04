@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private ICommand _jumpCommand;
     private ICommand _jumpSpecialCommand;
     //Variables
+    public int sceneBuildIndex;
     [SerializeField] public float tiempoTranscurrido = 0f;
     [SerializeField] public float jumpCooldown = 0.5f;
     [SerializeField] private float jumpTimer = 0f;
@@ -79,9 +80,13 @@ public class PlayerController : MonoBehaviour
             if (jumpTimer <= 0f)
             {
                 _grounded = true;
+                _animator.SetBool("Jump", false); // Set the "Jump" parameter to false when grounded
             }
         }
     }
+
+   
+
 
     private bool isPlaying = false; // Variable para controlar si el sonido está reproduciéndose o no
 
@@ -90,7 +95,8 @@ public class PlayerController : MonoBehaviour
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         _rig.velocity = new Vector2(horizontalMove * _runSpeed, _rig.velocity.y);
         _animator.SetFloat("runSpeed", Mathf.Abs(horizontalMove));
-        
+        _grounded = Physics2D.OverlapCircle(_groundCheck.position, _groundRadius, _LayerGround);
+        _animator.SetBool("grounded", _grounded);
 
         if (horizontalMove < 0 && _facingRight == true)
         {
@@ -114,6 +120,7 @@ public class PlayerController : MonoBehaviour
                 isPlaying = true;
             }
         }
+
         else if (horizontalMove == 0)
         {
             
@@ -123,6 +130,7 @@ public class PlayerController : MonoBehaviour
                 isPlaying = false;
             }
         }
+
         _animator.SetBool("move", horizontalMove != 0);
     }
 
@@ -193,6 +201,18 @@ public class PlayerController : MonoBehaviour
         isStomping = true;
         StartCoroutine(StumpJump());
     }
+     public IEnumerator RegresaralSuelo()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (!_grounded)
+        {
+            _animator.SetBool("Jump", true);
+        }
+        else
+        {
+            _animator.SetBool("Jump", false);
+        }
+    }
 
     public IEnumerator StumpJump()
     {
@@ -229,6 +249,7 @@ public class PlayerController : MonoBehaviour
         if (_HealthPoints <= 0)
         {
             this.gameObject.SetActive(false);
+            SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         }
     }
 

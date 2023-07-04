@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] private int dmg;
+    public PlayerController player;
+    public int enemyDamage = 1;
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            collision.GetComponent<PlayerController>().Hurt(dmg);
-            Debug.Log("hit");
+            if (player != null)
+            {
+                player.Hurt(enemyDamage);
+            }
         }
 
     }
