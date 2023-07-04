@@ -34,6 +34,7 @@ public class Enemy_Factory : MonoBehaviour
         {
             throw new ArgumentException("Invalid enemy type: " + enemyType);
         }
+        
        
         return Instantiate(enemy, position, Quaternion.identity);
 

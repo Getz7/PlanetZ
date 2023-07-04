@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5fbd3f4f0604b4dad579bf044a6e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHP: 5
+  player: {fileID: 0}
+  _EHealthPoints: 3
 --- !u!114 &-2049974568763613776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,4 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93152a28c6235b149adb0ef2be2eb14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 1
+  player: {fileID: 0}
+  enemyDamage: 1

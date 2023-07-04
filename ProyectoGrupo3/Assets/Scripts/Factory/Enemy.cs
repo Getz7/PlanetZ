@@ -29,8 +29,10 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
-    public abstract void Move();
-    public abstract void DrawEnemy();
+    public abstract void Awake();
+
+    public abstract void Move(int _direction);
+   
 
     public abstract void Attack();
 
@@ -46,4 +48,6 @@ public abstract class Enemy : MonoBehaviour
     {
 
     }
+    public abstract void DirecctionChange();
+    
 }

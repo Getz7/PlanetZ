@@ -21,12 +21,6 @@ public class EnemySpawner : MonoBehaviour
 
         _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
 
-
-
-
-
-
-
     }
 
     

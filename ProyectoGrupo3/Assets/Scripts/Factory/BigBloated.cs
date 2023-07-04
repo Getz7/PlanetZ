@@ -12,18 +12,24 @@ public class BigBloated : Enemy
         _speed = 0.7f;
         
     }
-    public override void DrawEnemy()
-    {
-
-    }
+   
 
     public override void Attack()
     {
         
     }
 
-    public override void Move()
+    public override void Awake()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Move(int _direction)
     {
 
+    }
+    public override void DirecctionChange()
+    {
+        throw new System.NotImplementedException();
     }
 }
