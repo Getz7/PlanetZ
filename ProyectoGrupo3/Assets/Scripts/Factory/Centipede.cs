@@ -7,9 +7,11 @@ public class Centipede : Enemy
 
     private float movespeed = 2f;
     private Animator anim;
-    private bool movingLeft;
+    private bool movingLeft, movingRight;
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
+    private Rigidbody2D RB;
+    [SerializeField] private SpriteRenderer SR;
 
 
     public Centipede()
@@ -25,6 +27,8 @@ public class Centipede : Enemy
 
     private void Start()
     {
+        RB = GetComponent<Rigidbody2D>();
+        SR = GetComponent<SpriteRenderer>();
         GameObject _leftEdge = GameObject.Find("LeftEdge");
         GameObject _rightEdge = GameObject.Find("RightEdge");
 
@@ -50,45 +54,38 @@ public class Centipede : Enemy
 
     private void Update()
     {
-        //Condiciones para que el enemigo se de la vuelta
-        if (movingLeft)
+        if (movingRight)
         {
-            //Si la posicion del enemigo es mayor o igual al punto de refrencia left Edge tons se mueve si no cambia
-            if (transform.position.x >= leftEdge.position.x)
-                Move(-1);
-            else
+           RB.velocity = new Vector2(movespeed, RB.velocity.y);
+
+            SR.flipX = false;
+            if (transform.position.x > rightEdge.position.x)
             {
-                DirecctionChange();
+                movingRight = false;
             }
         }
         else
         {
-            if (transform.position.x <= rightEdge.position.x)
-                Move(1);
-            else
+            RB.velocity = new Vector2(-movespeed, RB.velocity.y);
+            SR.flipX = true;
+            if (transform.position.x < leftEdge.position.x)
             {
-                DirecctionChange();
+                movingRight = true;
             }
         }
+        anim.SetBool("move", true);
     }
     public override void Attack()
     {
 
     }
 
-    public override void Move(int _direction)
+    public override void Move(int speed) 
     {
-        anim.SetBool("move", true);
+       
         
-        transform.localScale = new Vector3(transform.localScale.x * _direction, transform.localScale.y, transform.localScale.z);
-        transform.position = new Vector3(transform.position.x + Time.deltaTime * _direction * movespeed, transform.position.y, transform.position.z);
+        
     }
-    public override void DirecctionChange()
-    {
-        anim.SetBool("move", false);
-
-        //! operator invierte el valor en este caso de true a false
-        movingLeft = !movingLeft;
-    }
+    
 
 }

@@ -24,12 +24,9 @@ public class BigBloated : Enemy
         throw new System.NotImplementedException();
     }
 
-    public override void Move(int _direction)
+    public override void Move(int speed)
     {
 
     }
-    public override void DirecctionChange()
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }
