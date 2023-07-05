@@ -5,7 +5,7 @@ using UnityEngine;
 public class Centipede : Enemy
 {
 
-    private float movespeed = 2f;
+    private float movespeed = 3f;
     private Animator anim;
     private bool movingLeft, movingRight;
     [SerializeField] private Transform leftEdge;
