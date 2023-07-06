@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
         _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
 
-        _enemyFac.CreateEnemy("Centipede", new Vector2(69, -79));
+        
 
         _enemyFac.CreateEnemy("BigBloated", new Vector2(15, -80));
         
