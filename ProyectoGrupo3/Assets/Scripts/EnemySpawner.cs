@@ -14,14 +14,15 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        
 
         //LLamamos a la factoria para crear los enemigos 
         
 
-        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79)).transform.SetParent(transform);
+        //_enemyFac.CreateEnemy("Centipede", new Vector2(67, -79)).transform.SetParent(transform);
 
-        
+
 
         _enemyFac.CreateEnemy("BigBloated", new Vector2(15, -80));
         
