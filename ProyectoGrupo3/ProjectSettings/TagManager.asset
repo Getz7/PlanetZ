@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gameplay
   - Enemy
+  - LPoint
   layers:
   - Default
   - TransparentFX

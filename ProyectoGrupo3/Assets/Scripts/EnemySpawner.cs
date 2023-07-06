@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     
     [SerializeField] private Enemy_Factory _enemyFac;
+    [SerializeField] private GameObject[] spawns;
    
 
     

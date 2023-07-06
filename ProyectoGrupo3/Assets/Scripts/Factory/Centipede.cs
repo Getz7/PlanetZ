@@ -5,7 +5,7 @@ using UnityEngine;
 public class Centipede : Enemy
 {
 
-    private float movespeed = 3f;
+    [SerializeField] private float movespeed = 3f;
     private Animator anim;
     private bool movingLeft, movingRight;
     [SerializeField] private Transform leftEdge;
@@ -29,14 +29,14 @@ public class Centipede : Enemy
     {
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
-        GameObject _leftEdge = GameObject.Find("LeftEdge");
         GameObject _rightEdge = GameObject.Find("RightEdge");
+        GameObject _leftEdge = GameObject.Find("LeftEdge");
 
         if(_leftEdge != null)
         {
             leftEdge = _leftEdge.transform;
         }
-        if (_rightEdge != null)
+        if(_rightEdge != null)
         {
             rightEdge = _rightEdge.transform;
         }
@@ -58,7 +58,7 @@ public class Centipede : Enemy
         {
            RB.velocity = new Vector2(movespeed, RB.velocity.y);
 
-            SR.flipX = false;
+            SR.flipX = true;
             if (transform.position.x > rightEdge.position.x)
             {
                 movingRight = false;
@@ -67,7 +67,7 @@ public class Centipede : Enemy
         else
         {
             RB.velocity = new Vector2(-movespeed, RB.velocity.y);
-            SR.flipX = true;
+            SR.flipX = false;
             if (transform.position.x < leftEdge.position.x)
             {
                 movingRight = true;
