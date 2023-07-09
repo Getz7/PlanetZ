@@ -20,8 +20,8 @@ public class EnemySpawner : MonoBehaviour
         //LLamamos a la factoria para crear los enemigos 
         
 
-        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79)).transform.SetParent(transform);
-        //_enemyFac.CreateEnemy("Centipede", new Vector2(67, -79)).transform.SetParent(transform);
+        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79)).transform.SetParent(spawns[1].transform);
+        _enemyFac.CreateEnemy("Centipede", new Vector2(101, -101)).transform.SetParent(spawns[0].transform);
 
 
 
