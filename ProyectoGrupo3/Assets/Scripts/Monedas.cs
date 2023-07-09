@@ -10,22 +10,36 @@ public class Monedas : MonoBehaviour
    
    
    
-   private void OnTriggerEnter2D (Collider2D other ){
+   private void OnTriggerEnter2D (Collider2D other )
+   {
 
-if (other.CompareTag("Player"))
-{
+       if (other.CompareTag("Player"))
+       {
     
-ControladorPuntos.Instancia.SumarPuntos(CantidadPuntos);
-Puntaje.ActualizarPuntos(ControladorPuntos.Instancia.CantidadPuntos);
-Destroy(gameObject);
+           ControladorPuntos.Instancia.SumarPuntos(CantidadPuntos);
+           Puntaje.ActualizarPuntos(ControladorPuntos.Instancia.CantidadPuntos);
+           Destroy(gameObject);
 
 
-}
-
+      } 
 
    }
 
+public object Clone()
+    {
 
+        
+         Monedas clone = Instantiate(this);
+        clone.Puntaje = this.Puntaje;
+        clone.CantidadPuntos = this.CantidadPuntos;
+        Transform Monedas = GetComponent<Transform>();
+        Monedas.position= new Vector3(Monedas.position.x + 2f,Monedas.position.y,Monedas.position.z);        
+
+
+
+    return clone;
+    
+    }
 
 
     // Start is called before the first frame update
