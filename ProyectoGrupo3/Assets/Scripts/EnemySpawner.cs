@@ -22,6 +22,8 @@ public class EnemySpawner : MonoBehaviour
 
         _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79)).transform.SetParent(spawns[1].transform);
         _enemyFac.CreateEnemy("Centipede", new Vector2(101, -101)).transform.SetParent(spawns[0].transform);
+       
+
 
 
 

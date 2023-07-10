@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public int _HealthPoints = 5;
     [SerializeField] private float _stumpTimer;
     [SerializeField] private bool _canSpecial = false;
+    [SerializeField] private GameObject _olaPrefab;
     private Animator _animator;   
     private float _timer;
     private bool _canBehurt = true;
@@ -147,8 +148,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && _canSpecial)
         {
             _canSpecial = false;
+            InstanciateProjectile(_olaPrefab, 10f);
             _animator.SetBool("SpecialAttack", false);
-            
+
         }
     }
 
@@ -162,7 +164,7 @@ public class PlayerController : MonoBehaviour
     private void InstanciateProjectile(GameObject projectile, float speed)
     {
         GameObject prefab = Instantiate(projectile, _punchCheck.position, Quaternion.identity);
-        if (!_facingRight)
+        if (_facingRight)
         {
             prefab.GetComponent<Rigidbody2D>().velocity = _punchCheck.right * speed;
 

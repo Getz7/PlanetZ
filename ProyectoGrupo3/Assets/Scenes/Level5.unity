@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &35219561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1615,8 +1615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &458587055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1716,11 +1716,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &509467588 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8727617339641655425, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
-  m_PrefabInstance: {fileID: 1151665156}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &526712641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,8 +2592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &746921390
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4796,8 +4791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1061373365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5028,8 +5023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1088266334
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5268,7 +5263,7 @@ Transform:
   - {fileID: 268261520}
   - {fileID: 1298921453}
   - {fileID: 1032706389}
-  - {fileID: 509467588}
+  - {fileID: 1151665157}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5279,6 +5274,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146288596}
     m_Modifications:
+    - target: {fileID: 3477893809491926961, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477893809491926961, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477893809491926961, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8727617339641655425, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -5329,6 +5336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
+--- !u!4 &1151665157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3477893809491926961, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
+  m_PrefabInstance: {fileID: 1151665156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1192234349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5576,8 +5588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1205250833
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60996,8 +61008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1394733010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63408,6 +63420,147 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637653192}
   m_CullTransparentMesh: 1
+--- !u!1 &1651849324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1651849327}
+  - component: {fileID: 1651849326}
+  - component: {fileID: 1651849325}
+  m_Layer: 0
+  m_Name: Musica
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1651849325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651849324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea424bcef16a9684493c9ce3d0c488b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1651849326
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651849324}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 969f30643d05bc649a741bf0414e0648, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1651849327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651849324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 93.00055, y: -85.09604, z: -0.5275029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1670251794
 GameObject:
   m_ObjectHideFlags: 0
@@ -63853,8 +64006,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1704334122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64718,8 +64871,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1787418494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65194,8 +65347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &1894067699
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65574,7 +65727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003229060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9, y: 4.3, z: -16.88413}
+  m_LocalPosition: {x: -2, y: 2.5, z: -16.88413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65613,7 +65766,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 509467588}
+  m_Follow: {fileID: 1151665157}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -65810,7 +65963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065548470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.688641, y: 4.35517, z: -16.88413}
+  m_LocalPosition: {x: 8.08723, y: 2.54703, z: -16.88413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66711,8 +66864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce800e116c69220419a6f6ec27093dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 509467588}
-  respawnPoint: {fileID: 0}
+  player: {fileID: 1151665157}
+  respawnPoint: {fileID: 1151665157}
 --- !u!61 &2143831540
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,7 +6,6 @@ public class Centipede : Enemy
 {
 
     [SerializeField] private float movespeed = 3f;
-    private Animator anim;
     private bool movingLeft, movingRight;
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
@@ -20,9 +19,10 @@ public class Centipede : Enemy
 
     }
 
-    public override void Awake()
+    protected override void Awake()
     {
-        anim = GetComponent<Animator>();
+        base.Awake();
+
     }
 
     private void Start()

@@ -6,7 +6,7 @@ public class BigBloated : Enemy
 {
 
     private float movespeed = 2f;
-    private Animator anim;
+    
     private bool movingLeft, movingRight;
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
@@ -46,10 +46,10 @@ public class BigBloated : Enemy
         
     }
 
-    public override void Awake()
+    protected override void Awake()
     {
-        
-        anim = GetComponent<Animator>();
+        base.Awake();
+
     }
 
     public override void Move(int speed)
