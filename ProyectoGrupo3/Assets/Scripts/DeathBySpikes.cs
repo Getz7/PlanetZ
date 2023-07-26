@@ -10,10 +10,17 @@ public class DeathBySpikes : MonoBehaviour
     [SerializeField] private Transform respawnPoint;
     private string nombreDato;
     private bool First;
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null && playerController.IsShieldActive())
+            {
+                // The player has an active shield, so they survive the spikes
+                return;
+            }
+
             StartCoroutine(SecuenciaMorir());
         }
     }
@@ -28,6 +35,11 @@ public class DeathBySpikes : MonoBehaviour
         Time.timeScale = 1;
         //cambiar escena
         //PlayerPrefs.SetFloat(nombreDato, contador.restante);
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.StartCoroutine(playerController.ShieldVulnerabilityPeriod());
+        }
         SceneManager.LoadScene("Perdida");
     }
     private void Update()

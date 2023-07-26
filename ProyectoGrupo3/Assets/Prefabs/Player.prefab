@@ -276,6 +276,13 @@ MonoBehaviour:
   _stumpTimer: 0.5
   _canSpecial: 0
   _olaPrefab: {fileID: 6561366561814199525, guid: be32f89230e9cd5458b8d2537abbe22f, type: 3}
+  deathBySpikes: {fileID: 0}
+  _shieldActive: 0
+  _shieldDuration: 5
+  _shieldCooldown: 30
+  _shieldCooldownTimer: 0
+  _shieldVulnerabilityDuration: 7
+  _shieldTimerText: {fileID: 716638144050719251, guid: ad682caded5d8594aa9d05d74148d685, type: 3}
   escenaActual: 
   isStomping: 0
 --- !u!95 &3477893809491926972

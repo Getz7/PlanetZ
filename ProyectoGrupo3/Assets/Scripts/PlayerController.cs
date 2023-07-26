@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 //using UnityEditor.Animations;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //receiver
 
@@ -32,6 +34,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _stumpTimer;
     [SerializeField] private bool _canSpecial = false;
     [SerializeField] private GameObject _olaPrefab;
+    public DeathBySpikes deathBySpikes;
+    [SerializeField] private bool _shieldActive = false;
+    [SerializeField] private float _shieldDuration = 2.0f; 
+    [SerializeField] private float _shieldCooldown = 5.0f; 
+    [SerializeField] private float _shieldCooldownTimer = 0.0f;
+    [SerializeField] private float _shieldVulnerabilityDuration = 1.0f;
+  
+
     private Animator _animator;   
     private float _timer;
     private bool _canBehurt = true;
@@ -53,6 +63,11 @@ public class PlayerController : MonoBehaviour
             inputHandler.SetSpecialJumpCommand(_jumpSpecialCommand);
         }
     }
+    public bool IsShieldActive()
+    {
+        
+        return _shieldActive;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +87,10 @@ public class PlayerController : MonoBehaviour
        ControladorMovimiento();
        ControladorAtaques();
      
+
     }
+  
+
     private void ControladorTiempoSalto()
     {
         if (!_grounded)
@@ -133,9 +151,57 @@ public class PlayerController : MonoBehaviour
         }
 
         _animator.SetBool("move", horizontalMove != 0);
+        if (Input.GetKeyDown(KeyCode.Q) && _shieldCooldownTimer <= 0)
+        {
+            ActivateShield();
+        }
+    }
+    private void ActivateShield()
+    {
+        _shieldActive = true;
+        _shieldCooldownTimer = _shieldCooldown;
+
+        StartCoroutine(ShieldCooldownTimer());
+        StartCoroutine(ShieldVulnerabilityPeriod());
+
+    
     }
 
-   
+    private IEnumerator ShieldVulnerabilityTimer()
+    {
+       
+        yield return new WaitForSeconds(_shieldDuration);
+
+       
+        _shieldActive = false;
+
+        StartCoroutine(ShieldVulnerabilityPeriod());
+    }
+    public IEnumerator ShieldVulnerabilityPeriod()
+    {
+        yield return new WaitForSeconds(_shieldDuration);
+        _shieldActive = false;
+     
+    }
+
+
+    private IEnumerator ShieldCooldownTimer()
+    {
+        while (_shieldCooldownTimer > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            _shieldCooldownTimer -= 1.0f;
+        }
+
+       
+        _shieldActive = false;
+
+       
+    }
+
+
+
+
 
     private void ControladorAtaques()
     {
@@ -153,7 +219,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
     
     private void OnDrawGizmosSelected()
     {
@@ -244,19 +309,26 @@ public class PlayerController : MonoBehaviour
     {
         if (_canBehurt)
         {
-            _canBehurt = false;
-            _HealthPoints -= damage;
-            StartCoroutine(Invulnerability());
-        }
-        if (_HealthPoints <= 0)
-        {
-            this.gameObject.SetActive(false);
-            SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+            if (!_shieldActive) 
+            {
+                _canBehurt = false;
+                _HealthPoints -= damage;
+                StartCoroutine(Invulnerability());
+
+                if (_HealthPoints <= 0)
+                {
+                    this.gameObject.SetActive(false);
+                    SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+                }
+                else
+                {
+                    StartCoroutine(ShieldVulnerabilityPeriod());
+                }
+            }
         }
     }
 
-    
-    
+
     IEnumerator Invulnerability()
     {
         yield return new WaitForSeconds(2f);
