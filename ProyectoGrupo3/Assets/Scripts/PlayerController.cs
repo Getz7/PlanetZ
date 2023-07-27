@@ -40,7 +40,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _shieldCooldown = 5.0f; 
     [SerializeField] private float _shieldCooldownTimer = 0.0f;
     [SerializeField] private float _shieldVulnerabilityDuration = 1.0f;
-  
+    [SerializeField] private GameObject _activeShieldUI;      
+    [SerializeField] private GameObject _unavailableShieldUI;
+
 
     private Animator _animator;   
     private float _timer;
@@ -78,6 +80,8 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
    
         originalGravity = _rig.gravityScale;
+        _activeShieldUI.SetActive(false);
+        _unavailableShieldUI.SetActive(true);
     }
 
     // Update is called once per frame
@@ -86,7 +90,10 @@ public class PlayerController : MonoBehaviour
         ControladorTiempoSalto();
        ControladorMovimiento();
        ControladorAtaques();
-     
+        if (Input.GetKeyDown(KeyCode.Q) && _shieldCooldownTimer <= 0)
+        {
+            ActivateShield();
+        }
 
     }
   
@@ -161,22 +168,25 @@ public class PlayerController : MonoBehaviour
         _shieldActive = true;
         _shieldCooldownTimer = _shieldCooldown;
 
-        StartCoroutine(ShieldCooldownTimer());
-        StartCoroutine(ShieldVulnerabilityPeriod());
+        _activeShieldUI.SetActive(true);       
+        _unavailableShieldUI.SetActive(false);
 
-    
+        StartCoroutine(ShieldCooldownTimer());
+        StartCoroutine(ShieldVulnerabilityTimer());
     }
 
     private IEnumerator ShieldVulnerabilityTimer()
     {
-       
         yield return new WaitForSeconds(_shieldDuration);
 
-       
         _shieldActive = false;
 
-        StartCoroutine(ShieldVulnerabilityPeriod());
+        _activeShieldUI.SetActive(false);      
+        _unavailableShieldUI.SetActive(true); 
+
+        StartCoroutine(ShieldCooldownTimer());
     }
+
     public IEnumerator ShieldVulnerabilityPeriod()
     {
         yield return new WaitForSeconds(_shieldDuration);
