@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _punchCheck;
     [SerializeField] private bool _facingRight = true;
     [SerializeField] private GameObject _hitbox;
-    [SerializeField] public int _HealthPoints = 7;
+    [SerializeField] public int _HealthPoints = 6;
     [SerializeField] private float _stumpTimer;
     [SerializeField] private bool _canSpecial = false;
     [SerializeField] private GameObject _olaPrefab;
