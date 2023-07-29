@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _punchCheck;
     [SerializeField] private bool _facingRight = true;
     [SerializeField] private GameObject _hitbox;
-    [SerializeField] public int _HealthPoints = 5;
+    [SerializeField] public int _HealthPoints = 7;
     [SerializeField] private float _stumpTimer;
     [SerializeField] private bool _canSpecial = false;
     [SerializeField] private GameObject _olaPrefab;
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
    
 
 
-    private bool isPlaying = false; // Variable para controlar si el sonido está reproduciéndose o no
+    private bool isPlaying = false; // Variable para controlar si el sonido estï¿½ reproduciï¿½ndose o no
 
     private void ControladorMovimiento()
     {
