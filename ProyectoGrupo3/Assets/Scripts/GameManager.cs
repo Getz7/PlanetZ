@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    
     private int contadorEnemies = 0;
     private PlayerController player;
-    public HUD hud;
+    
 
 
 
