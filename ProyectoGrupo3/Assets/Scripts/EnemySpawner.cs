@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     
     [SerializeField] private Enemy_Factory _enemyFac;
-    [SerializeField] private GameObject[] spawns;
+    
    
 
     
@@ -20,8 +20,8 @@ public class EnemySpawner : MonoBehaviour
         //LLamamos a la factoria para crear los enemigos 
         
 
-        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79)).transform.SetParent(spawns[1].transform);
-        _enemyFac.CreateEnemy("Centipede", new Vector2(101, -101)).transform.SetParent(spawns[0].transform);
+        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(101, -101));
        
 
 

@@ -5,9 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     // common propperties
-     public int _hp { get; set; }
-     public int _dmg { get; set; }
-     public float _speed { get; set; }
+   
 
     [SerializeField] private string _type;
     public Rigidbody2D rg2D;
@@ -24,9 +22,7 @@ public abstract class Enemy : MonoBehaviour
 
     public Enemy(int hp, int dmg, float speed)
     {
-        _hp = hp;
-        _dmg = dmg;
-        _speed = speed;
+       
         
     }
 
@@ -69,17 +65,14 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
-    public abstract void Move(int movespeed);
+    public abstract void Move();
    
 
     public abstract void Attack();
 
 
 
-    public  void TakeDmg()
-    {
-
-    }
+    public abstract void TakeDmg();
     
 
     protected void Die()

@@ -6,11 +6,13 @@ public class Centipede : Enemy
 {
 
     [SerializeField] private float movespeed = 3f;
-    private bool movingLeft, movingRight;
-    [SerializeField] private Transform leftEdge;
-    [SerializeField] private Transform rightEdge;
+    [SerializeField] private float timeToChangeDirection = 2f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private bool movingRight = false;
+    private int moveDirection = 1; // -1 for left, 1 for right
+    [SerializeField] private float timer = 0f;
     private Rigidbody2D RB;
-    [SerializeField] private SpriteRenderer SR;
+     private SpriteRenderer SR;
 
 
     public Centipede()
@@ -27,65 +29,61 @@ public class Centipede : Enemy
 
     private void Start()
     {
+        // Adjust the initial movement direction based on 'startMovingRight' variable
+        moveDirection = movingRight ? 1 : -1;
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
-        GameObject _rightEdge = GameObject.Find("RightEdge");
-        GameObject _leftEdge = GameObject.Find("LeftEdge");
-
-        if(_leftEdge != null)
-        {
-            leftEdge = _leftEdge.transform;
-        }
-        if(_rightEdge != null)
-        {
-            rightEdge = _rightEdge.transform;
-        }
-
+      
 
     }
 
 
 
-    public  virtual void TakeDamage(float _damage)
-    {
-        
-    }
+    
 
 
     private void Update()
     {
-        if (movingRight)
-        {
-           RB.velocity = new Vector2(movespeed, RB.velocity.y);
-
-            SR.flipX = true;
-            if (transform.position.x > rightEdge.position.x)
-            {
-                movingRight = false;
-            }
-        }
-        else
-        {
-            RB.velocity = new Vector2(-movespeed, RB.velocity.y);
-            SR.flipX = false;
-            if (transform.position.x < leftEdge.position.x)
-            {
-                movingRight = true;
-            }
-        }
-        anim.SetBool("move", true);
+        Move();
     }
     public override void Attack()
     {
 
     }
 
-    public override void Move(int speed) 
+    public override void Move() 
     {
-       
-        
+
+        anim.SetBool("move", true);
+
+        transform.Translate(moveDirection * Vector2.right * speed * Time.deltaTime);
+
+        timer += Time.deltaTime;
+
+        if (timer >= timeToChangeDirection)
+        {
+            moveDirection *= -1;
+            UpdateSpriteOrientation();
+
+            timer = 0f;
+        }
+
+    }
+    public void UpdateSpriteOrientation()
+    {
+        // Flip the sprite along the X-axis if moving left
+        if (moveDirection < 0)
+        {
+            SR.flipX = false;
+        }
+        else
+        {
+            SR.flipX = true;
+        }
+    }
+
+    public override void TakeDmg()
+    {
         
     }
-    
-
 }

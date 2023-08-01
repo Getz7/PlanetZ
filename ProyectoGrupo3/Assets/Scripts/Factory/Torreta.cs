@@ -70,10 +70,13 @@ public class Torreta : Enemy
     }
 
 
-    public override void Move(int speed)
+    public override void Move()
     {
 
     }
 
-
+    public override void TakeDmg()
+    {
+        
+    }
 }
