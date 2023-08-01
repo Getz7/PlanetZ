@@ -163,6 +163,50 @@ public class PlayerController : MonoBehaviour
             ActivateShield();
         }
     }
+
+    public void DecreaseHealth(int amount)
+    {
+        _HealthPoints -= amount;
+     
+    }
+    public void IncreaseJumpForceTemporarily(float extraForce, float duration)
+    {
+        _jumpForce += extraForce;
+        StartCoroutine(RestoreJumpForceAfterDuration(extraForce, duration));
+    }
+
+    private IEnumerator RestoreJumpForceAfterDuration(float extraForce, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _jumpForce -= extraForce;
+    }
+
+    public void IncreaseRunSpeedTemporarily(float extraSpeed, float duration)
+    {
+        _runSpeed += extraSpeed;
+        StartCoroutine(RestoreRunSpeedAfterDuration(extraSpeed, duration));
+    }
+
+    private IEnumerator RestoreRunSpeedAfterDuration(float extraSpeed, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _runSpeed -= extraSpeed;
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {    
+        Item item = other.GetComponent<Item>();
+
+        if (item != null)
+        { 
+            ItemVisitor itemVisitor = new ItemVisitor();
+            item.Accept(itemVisitor);
+
+            other.gameObject.SetActive(false);
+        }
+    }
     private void ActivateShield()
     {
         _shieldActive = true;

@@ -335,7 +335,7 @@ MonoBehaviour:
   _punchCheck: {fileID: 5918652592646305923}
   _facingRight: 1
   _hitbox: {fileID: 3882455528443207140}
-  _HealthPoints: 5
+  _HealthPoints: 6
   _stumpTimer: 0.5
   _canSpecial: 0
   _olaPrefab: {fileID: 6561366561814199525, guid: be32f89230e9cd5458b8d2537abbe22f, type: 3}
