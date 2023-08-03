@@ -25,10 +25,7 @@ public class Volador : Enemy
        
         PuntoInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
-    public override void Move(int movespeed)
-    {
-        
-    }
+  
 
     public override void Attack()
     {
@@ -50,7 +47,13 @@ public class Volador : Enemy
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime);
     }
 
-    
+    public override void Move()
+    {
+       
+    }
 
-
+    public override void TakeDmg()
+    {
+        
+    }
 }
