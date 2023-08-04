@@ -30,6 +30,10 @@ public abstract class Enemy : MonoBehaviour
     {
 
     }
+    protected virtual void Start()
+    {
+        
+    }
 
 
     protected virtual void Awake()

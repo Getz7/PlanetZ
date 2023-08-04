@@ -22,9 +22,10 @@ public class EnemySpawner : MonoBehaviour
 
         _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
         _enemyFac.CreateEnemy("Centipede", new Vector2(101, -101));
-       
 
-
+        _enemyFac.CreateEnemy("Volador", new Vector2(90, -74));
+        _enemyFac.CreateEnemy("Volador", new Vector2(99, -74));
+        _enemyFac.CreateEnemy("Torreta", new Vector2(101, -78));
 
 
         _enemyFac.CreateEnemy("BigBloated", new Vector2(15, -80));
