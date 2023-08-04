@@ -36,15 +36,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _olaPrefab;
     public DeathBySpikes deathBySpikes;
     [SerializeField] private bool _shieldActive = false;
-    [SerializeField] private float _shieldDuration = 2.0f; 
-    [SerializeField] private float _shieldCooldown = 5.0f; 
+    [SerializeField] private float _shieldDuration = 2.0f;
+    [SerializeField] private float _shieldCooldown = 5.0f;
     [SerializeField] private float _shieldCooldownTimer = 0.0f;
     [SerializeField] private float _shieldVulnerabilityDuration = 1.0f;
-    [SerializeField] private GameObject _activeShieldUI;      
+    [SerializeField] private GameObject _activeShieldUI;
     [SerializeField] private GameObject _unavailableShieldUI;
+    [SerializeField] private GameObject oxigeno1;
+    [SerializeField] private GameObject oxigeno2;
+    [SerializeField] private GameObject oxigeno3;
+    [SerializeField] private GameObject oxigeno4;
+    [SerializeField] private GameObject oxigeno5;
+    [SerializeField] private GameObject oxigeno6;
+    [SerializeField] private GameObject oxigeno7;
+    [SerializeField] private GameObject oxigeno8;
+    [SerializeField] private GameObject oxigeno9;
+    [SerializeField] private GameObject oxigeno10;
+    [SerializeField] private GameObject oxigeno11;
+    [SerializeField] private int puntosOxigeno;
+    [SerializeField] private float tiempoPuntosOxigeno;
+    private float tiempoHabilidad;
 
-
-    private Animator _animator;   
+    private bool recuperarVelocidad = false;
+    private float tiempoRecuperacion = 15f;
+    private float tiempoUso = 15;
+    private bool velocidadReducida = false;
+    private Animator _animator;
     private float _timer;
     private bool _canBehurt = true;
     private int _playerDamage = 1;
@@ -67,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsShieldActive()
     {
-        
+
         return _shieldActive;
     }
 
@@ -78,25 +95,147 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetString("escenaActual", escenaActual);
         _canBehurt = true;
         _animator = GetComponent<Animator>();
-   
+
         originalGravity = _rig.gravityScale;
         _activeShieldUI.SetActive(false);
         _unavailableShieldUI.SetActive(true);
+
+        oxigeno4.SetActive(false);
+        oxigeno5.SetActive(false);
+        oxigeno6.SetActive(false);
+        oxigeno7.SetActive(false);
+        oxigeno8.SetActive(false);
+        oxigeno9.SetActive(false);
+        oxigeno10.SetActive(false);
+        oxigeno11.SetActive(false);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         ControladorTiempoSalto();
-       ControladorMovimiento();
-       ControladorAtaques();
+        ControladorMovimiento();
+        ControladorAtaques();
         if (Input.GetKeyDown(KeyCode.Q) && _shieldCooldownTimer <= 0)
         {
             ActivateShield();
         }
 
+
+
+
+        controlTanque();
+
+
     }
-  
+
+
+
+
+    private void controlTanque()
+    {
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            puntosOxigeno = puntosOxigeno - 15;
+            switch (puntosOxigeno)
+            {
+                case 150:
+                    oxigeno11.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 135:
+                    oxigeno10.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 120:
+                    oxigeno9.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 105:
+                    oxigeno8.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 90:
+                    oxigeno7.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 75:
+                    oxigeno6.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 60:
+                    oxigeno5.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 45:
+                    oxigeno4.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 30:
+                    oxigeno3.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 15:
+                    oxigeno2.SetActive(false);
+                    velocidadReducida = true;
+                    tiempoUso = 15f;
+                    break;
+                case 0:
+                    oxigeno1.SetActive(false);
+
+                    break; // Termina o switch case
+
+            }
+            _runSpeed = 4;
+            _HealthPoints = _HealthPoints + 1;
+
+            velocidadReducida = true;
+            tiempoUso = tiempoRecuperacion;
+
+            // Desactivar el oxígeno1 cuando puntosOxigeno llega a 0
+            if (puntosOxigeno <= 0)
+            {
+                oxigeno1.SetActive(false);
+            }
+
+            // Marcar que se debe recuperar la velocidad
+            recuperarVelocidad = true;
+
+
+        }
+        if (recuperarVelocidad && tiempoUso > 0)
+        {
+            tiempoUso -= Time.deltaTime;
+
+            // Cuando el tiempo de uso llega a 0, recuperar la velocidad y restablecer la bandera
+            if (tiempoUso <= 0)
+            {
+                _runSpeed = 8;
+                recuperarVelocidad = false;
+            }
+        }
+
+        // Habilidad especial para cambiar la velocidad a 8 cada tiempoPuntosOxigeno segundos
+        tiempoHabilidad += Time.deltaTime;
+        if (tiempoHabilidad > tiempoPuntosOxigeno)
+        {
+            _runSpeed = 8;
+            tiempoHabilidad = 0;
+        }
+    }
+
 
     private void ControladorTiempoSalto()
     {
@@ -111,7 +250,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+
 
 
     private bool isPlaying = false; // Variable para controlar si el sonido est� reproduci�ndose o no
@@ -126,9 +265,9 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalMove < 0 && _facingRight == true)
         {
-            
+
             Flip();
-            
+
             if (!isPlaying)
             {
                 ControladorSonidos.Instance.PlayerSound();
@@ -139,7 +278,7 @@ public class PlayerController : MonoBehaviour
         {
 
             Flip();
-            
+
             if (!isPlaying)
             {
                 ControladorSonidos.Instance.PlayerSound();
@@ -149,7 +288,7 @@ public class PlayerController : MonoBehaviour
 
         else if (horizontalMove == 0)
         {
-            
+
             if (isPlaying)
             {
                 ControladorSonidos.Instance.StopPlayerSound();
@@ -167,7 +306,7 @@ public class PlayerController : MonoBehaviour
     public void DecreaseHealth(int amount)
     {
         _HealthPoints -= amount;
-     
+
     }
     public void IncreaseJumpForceTemporarily(float extraForce, float duration)
     {
@@ -196,11 +335,11 @@ public class PlayerController : MonoBehaviour
 
 
     private void OnTriggerEnter2D(Collider2D other)
-    {    
+    {
         Item item = other.GetComponent<Item>();
 
         if (item != null)
-        { 
+        {
             ItemVisitor itemVisitor = new ItemVisitor();
             item.Accept(itemVisitor);
 
@@ -212,7 +351,7 @@ public class PlayerController : MonoBehaviour
         _shieldActive = true;
         _shieldCooldownTimer = _shieldCooldown;
 
-        _activeShieldUI.SetActive(true);       
+        _activeShieldUI.SetActive(true);
         _unavailableShieldUI.SetActive(false);
 
         StartCoroutine(ShieldCooldownTimer());
@@ -225,8 +364,8 @@ public class PlayerController : MonoBehaviour
 
         _shieldActive = false;
 
-        _activeShieldUI.SetActive(false);      
-        _unavailableShieldUI.SetActive(true); 
+        _activeShieldUI.SetActive(false);
+        _unavailableShieldUI.SetActive(true);
 
         StartCoroutine(ShieldCooldownTimer());
     }
@@ -235,7 +374,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(_shieldDuration);
         _shieldActive = false;
-     
+
     }
 
 
@@ -247,10 +386,10 @@ public class PlayerController : MonoBehaviour
             _shieldCooldownTimer -= 1.0f;
         }
 
-       
+
         _shieldActive = false;
 
-       
+
     }
 
 
@@ -273,7 +412,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(_groundCheck.position, _groundRadius);
@@ -307,7 +446,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Salto");
             _animator.SetBool("Jump", true);
-            
+
             _rig.velocity = Vector2.up * _jumpForce;
             _grounded = false;
             jumpTimer = jumpCooldown;
@@ -322,7 +461,7 @@ public class PlayerController : MonoBehaviour
         isStomping = true;
         StartCoroutine(StumpJump());
     }
-     public IEnumerator RegresaralSuelo()
+    public IEnumerator RegresaralSuelo()
     {
         yield return new WaitForSeconds(0.1f);
         if (!_grounded)
@@ -345,7 +484,7 @@ public class PlayerController : MonoBehaviour
     public void ExecuteCommand(ICommand command)
     {
         command.Execute();
-        
+
     }
     void Punch()
     {
@@ -363,7 +502,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_canBehurt)
         {
-            if (!_shieldActive) 
+            if (!_shieldActive)
             {
                 _canBehurt = false;
                 _HealthPoints -= damage;
@@ -398,5 +537,5 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("SpecialAttack", true);
     }
 
-  
+
 }

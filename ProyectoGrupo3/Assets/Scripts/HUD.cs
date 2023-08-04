@@ -23,11 +23,11 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Debug.Log("El jugador  tiene  " + playercontrol._HealthPoints);
+       
         if (playercontrol._HealthPoints < numeroMinimo)
         {
 
-            Debug.Log("Se ha apagado un  " + this.gameObject.name);   
+       
             corazon1.enabled = false;
         }
         else
