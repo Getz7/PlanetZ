@@ -6,11 +6,12 @@ public class EnemySpawner : MonoBehaviour
 {
     
     [SerializeField] private Enemy_Factory _enemyFac;
-    
-   
+    [SerializeField] private GameObject[] spawns; // Se usara para facilitar la posicion de los enemigos.
 
-    
-    
+
+
+
+
 
     // Start is called before the first frame update
     private void Start()
