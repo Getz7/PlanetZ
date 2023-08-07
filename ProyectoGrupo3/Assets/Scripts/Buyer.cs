@@ -9,4 +9,5 @@ public class Buyer : MonoBehaviour
         // Ejecutar el código que deseas cuando se hace clic en el objeto
         Debug.Log("Objeto clickeado: " + gameObject.name);
     }
+  
 }

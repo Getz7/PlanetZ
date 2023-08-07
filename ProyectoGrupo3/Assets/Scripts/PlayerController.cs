@@ -34,7 +34,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _stumpTimer;
     [SerializeField] private bool _canSpecial = false;
     [SerializeField] private GameObject _olaPrefab;
+    private ControladorPuntos controladorPuntos;
     public DeathBySpikes deathBySpikes;
+    private DecoratorData decoratorData;
     [SerializeField] private bool _shieldActive = false;
     [SerializeField] private float _shieldDuration = 2.0f;
     [SerializeField] private float _shieldCooldown = 5.0f;
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
     AudioClip playerAudio;
     private void Awake()
     {
+         decoratorData = DecoratorData.Instance;
+        controladorPuntos = ControladorPuntos.Instancia;
         _jumpCommand = new JumpCommand(this);
         _jumpSpecialCommand = new SpecialJumpCommand(this);
 
@@ -81,6 +85,16 @@ public class PlayerController : MonoBehaviour
             inputHandler.SetJumpCommand(_jumpCommand);
             inputHandler.SetSpecialJumpCommand(_jumpSpecialCommand);
         }
+    }
+ 
+    public bool HasEnoughPoints(int amount)
+    {
+        return controladorPuntos.CantidadPuntos >= amount;
+    }
+
+    public void DeductPoints(int amount)
+    {
+        controladorPuntos.CantidadPuntos -= amount;
     }
     public bool IsShieldActive()
     {
@@ -252,6 +266,30 @@ public class PlayerController : MonoBehaviour
 
 
 
+    private List<Decorator> decorators = new List<Decorator>();
+
+    public void ApplyDecorator(Decorator decorator)
+    {
+        decorators.Add(decorator);
+        decorator.ApplyDecorator(this);
+    }
+
+    public void ApplyHealthDecorator(int healthBoostAmount)
+    {
+        _HealthPoints += healthBoostAmount;
+        
+    }
+
+    public void ApplySpeedDecorator(float speedBoostAmount, float duration)
+    {
+        IncreaseRunSpeedTemporarily(speedBoostAmount, duration);
+    }
+
+
+    public void ApplyDecoratorToPlayerData(Decorator decorator)
+    {
+        DecoratorData.Instance.AddItemToInventory(decorator.getItem());
+    }
 
     private bool isPlaying = false; // Variable para controlar si el sonido est� reproduci�ndose o no
 

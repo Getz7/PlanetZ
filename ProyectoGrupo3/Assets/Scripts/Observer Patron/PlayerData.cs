@@ -15,7 +15,7 @@ public class PlayerData : MonoBehaviour, IObserver
 
     public void Updated(ISubject subject)
     {
-        if (subject is EventManager eventManager)
+        if (subject is EventManager eventManager)                               
         {
 
             Debug.Log("Key collected! Color: " + eventManager.CollectedKeyColor);
