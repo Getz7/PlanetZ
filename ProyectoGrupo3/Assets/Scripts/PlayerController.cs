@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     AudioClip playerAudio;
     private void Awake()
     {
-         decoratorData = DecoratorData.Instance;
+        decoratorData = DecoratorData.Instance;
         controladorPuntos = ControladorPuntos.Instancia;
         _jumpCommand = new JumpCommand(this);
         _jumpSpecialCommand = new SpecialJumpCommand(this);
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             inputHandler.SetSpecialJumpCommand(_jumpSpecialCommand);
         }
     }
- 
+
     public bool HasEnoughPoints(int amount)
     {
         return controladorPuntos.CantidadPuntos >= amount;
@@ -153,100 +153,106 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            puntosOxigeno = puntosOxigeno - 15;
-            switch (puntosOxigeno)
+
+            if (_HealthPoints > 6)
             {
-                case 150:
-                    oxigeno11.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 135:
-                    oxigeno10.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 120:
-                    oxigeno9.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 105:
-                    oxigeno8.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 90:
-                    oxigeno7.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 75:
-                    oxigeno6.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 60:
-                    oxigeno5.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 45:
-                    oxigeno4.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 30:
-                    oxigeno3.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 15:
-                    oxigeno2.SetActive(false);
-                    velocidadReducida = true;
-                    tiempoUso = 15f;
-                    break;
-                case 0:
+
+
+                puntosOxigeno = puntosOxigeno - 15;
+                switch (puntosOxigeno)
+                {
+                    case 150:
+                        oxigeno11.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 135:
+                        oxigeno10.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 120:
+                        oxigeno9.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 105:
+                        oxigeno8.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 90:
+                        oxigeno7.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 75:
+                        oxigeno6.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 60:
+                        oxigeno5.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 45:
+                        oxigeno4.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 30:
+                        oxigeno3.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 15:
+                        oxigeno2.SetActive(false);
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
+                        break;
+                    case 0:
+                        oxigeno1.SetActive(false);
+
+                        break; // Termina o switch case
+
+                }
+                _runSpeed = 4;
+                _HealthPoints = _HealthPoints + 1;
+
+                velocidadReducida = true;
+                tiempoUso = tiempoRecuperacion;
+
+                // Desactivar el oxígeno1 cuando puntosOxigeno llega a 0
+                if (puntosOxigeno <= 0)
+                {
                     oxigeno1.SetActive(false);
+                }
 
-                    break; // Termina o switch case
+                // Marcar que se debe recuperar la velocidad
+                recuperarVelocidad = true;
+
 
             }
-            _runSpeed = 4;
-            _HealthPoints = _HealthPoints + 1;
-
-            velocidadReducida = true;
-            tiempoUso = tiempoRecuperacion;
-
-            // Desactivar el oxígeno1 cuando puntosOxigeno llega a 0
-            if (puntosOxigeno <= 0)
+            if (recuperarVelocidad && tiempoUso > 0)
             {
-                oxigeno1.SetActive(false);
+                tiempoUso -= Time.deltaTime;
+
+                // Cuando el tiempo de uso llega a 0, recuperar la velocidad y restablecer la bandera
+                if (tiempoUso <= 0)
+                {
+                    _runSpeed = 8;
+                    recuperarVelocidad = false;
+                }
             }
 
-            // Marcar que se debe recuperar la velocidad
-            recuperarVelocidad = true;
-
-
-        }
-        if (recuperarVelocidad && tiempoUso > 0)
-        {
-            tiempoUso -= Time.deltaTime;
-
-            // Cuando el tiempo de uso llega a 0, recuperar la velocidad y restablecer la bandera
-            if (tiempoUso <= 0)
+            // Habilidad especial para cambiar la velocidad a 8 cada tiempoPuntosOxigeno segundos
+            tiempoHabilidad += Time.deltaTime;
+            if (tiempoHabilidad > tiempoPuntosOxigeno)
             {
                 _runSpeed = 8;
-                recuperarVelocidad = false;
+                tiempoHabilidad = 0;
             }
-        }
-
-        // Habilidad especial para cambiar la velocidad a 8 cada tiempoPuntosOxigeno segundos
-        tiempoHabilidad += Time.deltaTime;
-        if (tiempoHabilidad > tiempoPuntosOxigeno)
-        {
-            _runSpeed = 8;
-            tiempoHabilidad = 0;
         }
     }
 
@@ -277,7 +283,7 @@ public class PlayerController : MonoBehaviour
     public void ApplyHealthDecorator(int healthBoostAmount)
     {
         _HealthPoints += healthBoostAmount;
-        
+
     }
 
     public void ApplySpeedDecorator(float speedBoostAmount, float duration)
