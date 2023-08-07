@@ -138,8 +138,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
-
         controlTanque();
 
 
@@ -151,11 +149,13 @@ public class PlayerController : MonoBehaviour
     private void controlTanque()
     {
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (_HealthPoints < 6)
         {
 
-            if (_HealthPoints > 6)
+            if (Input.GetKeyDown(KeyCode.E))
             {
+
+
 
 
                 puntosOxigeno = puntosOxigeno - 15;
@@ -233,25 +233,27 @@ public class PlayerController : MonoBehaviour
                 recuperarVelocidad = true;
 
 
-            }
-            if (recuperarVelocidad && tiempoUso > 0)
-            {
-                tiempoUso -= Time.deltaTime;
 
-                // Cuando el tiempo de uso llega a 0, recuperar la velocidad y restablecer la bandera
-                if (tiempoUso <= 0)
+                if (recuperarVelocidad && tiempoUso > 0)
+                {
+                    tiempoUso -= Time.deltaTime;
+
+                    // Cuando el tiempo de uso llega a 0, recuperar la velocidad y restablecer la bandera
+                    if (tiempoUso <= 0)
+                    {
+                        _runSpeed = 8;
+                        recuperarVelocidad = false;
+                    }
+                }
+
+                // Habilidad especial para cambiar la velocidad a 8 cada tiempoPuntosOxigeno segundos
+                tiempoHabilidad += Time.deltaTime;
+                if (tiempoHabilidad > tiempoPuntosOxigeno)
                 {
                     _runSpeed = 8;
-                    recuperarVelocidad = false;
+                    tiempoHabilidad = 0;
                 }
-            }
 
-            // Habilidad especial para cambiar la velocidad a 8 cada tiempoPuntosOxigeno segundos
-            tiempoHabilidad += Time.deltaTime;
-            if (tiempoHabilidad > tiempoPuntosOxigeno)
-            {
-                _runSpeed = 8;
-                tiempoHabilidad = 0;
             }
         }
     }

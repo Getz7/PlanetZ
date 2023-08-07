@@ -46,7 +46,7 @@ public class Volador : Enemy
             //aplicar velocidad al cuerpo para que se devuelva al punto inical
             rg2D.velocity = target.normalized * velocidadMovimiento;
             //identificar a donde nos dirigimos 
-            anim.SetBool("Vejugador", false);
+          anim.SetBool("Vejugador", false);
         }
         //Player esta en distancia de ataque
         else
