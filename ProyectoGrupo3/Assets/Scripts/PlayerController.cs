@@ -144,21 +144,24 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private bool habilidadActivada = false;
+    private float tiempoHabilidadActivada;
 
 
     private void controlTanque()
     {
 
-        if (_HealthPoints < 6)
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-
-            if (Input.GetKeyDown(KeyCode.E))
+            if (_HealthPoints < 6 && puntosOxigeno > 0)
             {
-
-
-
-
                 puntosOxigeno = puntosOxigeno - 15;
+                habilidadActivada = true;
+                tiempoHabilidadActivada = Time.time;
                 switch (puntosOxigeno)
                 {
                     case 150:
@@ -193,70 +196,60 @@ public class PlayerController : MonoBehaviour
                         break;
                     case 60:
                         oxigeno5.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         break;
                     case 45:
                         oxigeno4.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
+
                         break;
                     case 30:
                         oxigeno3.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
+
                         break;
                     case 15:
                         oxigeno2.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
+
                         break;
                     case 0:
                         oxigeno1.SetActive(false);
-
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
+                        velocidadReducida = true;
+                        tiempoUso = 15f;
                         break; // Termina o switch case
 
                 }
-                _runSpeed = 4;
-                _HealthPoints = _HealthPoints + 1;
 
-                velocidadReducida = true;
-                tiempoUso = tiempoRecuperacion;
-
-                // Desactivar el oxígeno1 cuando puntosOxigeno llega a 0
-                if (puntosOxigeno <= 0)
-                {
-                    oxigeno1.SetActive(false);
-                }
-
-                // Marcar que se debe recuperar la velocidad
-                recuperarVelocidad = true;
-
-
-
-                if (recuperarVelocidad && tiempoUso > 0)
-                {
-                    tiempoUso -= Time.deltaTime;
-
-                    // Cuando el tiempo de uso llega a 0, recuperar la velocidad y restablecer la bandera
-                    if (tiempoUso <= 0)
-                    {
-                        _runSpeed = 8;
-                        recuperarVelocidad = false;
-                    }
-                }
-
-                // Habilidad especial para cambiar la velocidad a 8 cada tiempoPuntosOxigeno segundos
-                tiempoHabilidad += Time.deltaTime;
-                if (tiempoHabilidad > tiempoPuntosOxigeno)
-                {
-                    _runSpeed = 8;
-                    tiempoHabilidad = 0;
-                }
-
-            }
+            } Debug.Log("Tienes la vida full");
         }
+       
+
+        if (habilidadActivada && Time.time - tiempoHabilidadActivada >= 15f)
+        {
+            habilidadActivada = false; // Restablecemos la habilidad a su estado original
+            _runSpeed = 8; // Volvemos a la velocidad original de 8
+        }
+
+
     }
+
 
 
     private void ControladorTiempoSalto()
