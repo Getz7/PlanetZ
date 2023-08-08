@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 public class NextLvl : MonoBehaviour
 {
     public int sceneBuildIndex;
+    public int levelNumber;
+    private LevelManager lvlManager;
+
+    private void Start()
+    {
+        lvlManager = FindAnyObjectByType<LevelManager>();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,9 +21,12 @@ public class NextLvl : MonoBehaviour
 
         if (other.tag == "Player")
         {
+            lvlManager.MarkLevelCompleted(levelNumber);
+            Debug.Log("Level " + levelNumber + " completed!");
+
             print("Switching scene to " + sceneBuildIndex);
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         }
-        
+
     }
 }
