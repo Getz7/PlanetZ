@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject oxigeno9;
     [SerializeField] private GameObject oxigeno10;
     [SerializeField] private GameObject oxigeno11;
-    [SerializeField] private int puntosOxigeno = 45;
+    [SerializeField] public int puntosOxigeno = 45;
     
     [SerializeField] private float tiempoPuntosOxigeno;
     private float tiempoHabilidad;
