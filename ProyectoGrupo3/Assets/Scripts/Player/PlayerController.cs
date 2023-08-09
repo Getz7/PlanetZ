@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
 
 
     private List<IDecorator> _decorators = new List<IDecorator>();
-    public void ApplyDecorator(IDecorator decorator)
+    public void ApplyDecorators(IDecorator decorator)
     {
         _decorators.Add(decorator);
         decorator.ApplyDecorator(this);
