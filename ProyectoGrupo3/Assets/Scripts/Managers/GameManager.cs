@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     
     private int contadorEnemies = 0;
     private PlayerController player;
-    
+      private int puntosOxigeno;
 
 
 

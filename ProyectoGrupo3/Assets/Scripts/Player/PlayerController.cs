@@ -79,13 +79,17 @@ public class PlayerController : MonoBehaviour
         _jumpCommand = new JumpCommand(this);
         _jumpSpecialCommand = new SpecialJumpCommand(this);
 
-        // Get reference to the PlayerInputHandler and set the commands
+      
         PlayerInputHandler inputHandler = FindObjectOfType<PlayerInputHandler>();
         if (inputHandler != null)
         {
             inputHandler.SetJumpCommand(_jumpCommand);
             inputHandler.SetSpecialJumpCommand(_jumpSpecialCommand);
         }
+    }
+    private void LoadPuntosOxigenoFromPlayerDataManager()
+    {
+        puntosOxigeno = PlayerDataManager.Instance.puntosOxigeno;
     }
 
     public bool HasEnoughPoints(int amount)
@@ -103,11 +107,11 @@ public class PlayerController : MonoBehaviour
         return _shieldActive;
     }
 
-    // Start is called before the first frame update
+
     void Start()
     {
-      
-        LoadDecoratedState();
+
+        LoadPuntosOxigenoFromPlayerDataManager();
         escenaActual = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("escenaActual", escenaActual);
         _canBehurt = true;
@@ -116,7 +120,9 @@ public class PlayerController : MonoBehaviour
         originalGravity = _rig.gravityScale;
         _activeShieldUI.SetActive(false);
         _unavailableShieldUI.SetActive(true);
-
+        oxigeno1.SetActive(false);  
+        oxigeno2.SetActive(false);  
+        oxigeno3.SetActive(false);  
         oxigeno4.SetActive(false);
         oxigeno5.SetActive(false);
         oxigeno6.SetActive(false);
@@ -132,15 +138,11 @@ public class PlayerController : MonoBehaviour
     {
         return puntosOxigeno;
     }
-    public void LoadDecoratedState()
-    {
-    
-        puntosOxigeno = PlayerPrefs.GetInt("Points", puntosOxigeno);
-    }
+  
 
 
 
-    // Update is called once per frame
+
     void Update()
     {
         

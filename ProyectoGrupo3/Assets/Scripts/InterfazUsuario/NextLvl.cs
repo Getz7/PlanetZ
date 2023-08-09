@@ -18,10 +18,16 @@ public class NextLvl : MonoBehaviour
 
         if (other.tag == "Player")
         {
-           
-           
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            int playerPoints = playerController.GetPoints();
+
+         
+            PlayerDataManager.Instance.UpdatePuntosOxigeno(playerPoints);
+
             lvlManager.MarkLevelCompleted(levelNumber);
             Debug.Log("NextLvl: Level " + levelNumber + " completed! Switching scene to " + sceneBuildIndex);
+
+        
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         }
     }
