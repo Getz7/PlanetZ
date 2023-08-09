@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _olaPrefab;
     private ControladorPuntos controladorPuntos;
     public DeathBySpikes deathBySpikes;
-    private DecoratorData decoratorData;
+   
     [SerializeField] private bool _shieldActive = false;
     [SerializeField] private float _shieldDuration = 2.0f;
     [SerializeField] private float _shieldCooldown = 5.0f;
@@ -73,10 +73,11 @@ public class PlayerController : MonoBehaviour
     AudioClip playerAudio;
     private void Awake()
     {
-        decoratorData = DecoratorData.Instance;
+     
         controladorPuntos = ControladorPuntos.Instancia;
         _jumpCommand = new JumpCommand(this);
         _jumpSpecialCommand = new SpecialJumpCommand(this);
+        
 
         // Get reference to the PlayerInputHandler and set the commands
         PlayerInputHandler inputHandler = FindObjectOfType<PlayerInputHandler>();
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ApplyStoredDecorators();
         escenaActual = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("escenaActual", escenaActual);
         _canBehurt = true;
@@ -143,8 +145,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
+   
 
     private void controlTanque()
     {
@@ -258,7 +259,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+  
     private void ControladorTiempoSalto()
     {
         if (!_grounded)
@@ -274,30 +275,59 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private List<Decorator> decorators = new List<Decorator>();
+    private List<Decorator> purchasedDecorators = new List<Decorator>();
 
     public void ApplyDecorator(Decorator decorator)
     {
-        decorators.Add(decorator);
+        purchasedDecorators.Add(decorator);
         decorator.ApplyDecorator(this);
-    }
-
-    public void ApplyHealthDecorator(int healthBoostAmount)
-    {
-        _HealthPoints += healthBoostAmount;
-
+        Debug.Log("Decorator Applied: " + decorator.GetType().Name);
     }
 
     public void ApplySpeedDecorator(float speedBoostAmount, float duration)
     {
-        IncreaseRunSpeedTemporarily(speedBoostAmount, duration);
+        _runSpeed += speedBoostAmount;
+        StartCoroutine(RestoreSpeedAfterDuration(speedBoostAmount, duration));
+        Debug.Log("Speed Deco Applied");
     }
 
-
-    public void ApplyDecoratorToPlayerData(Decorator decorator)
+    private IEnumerator RestoreSpeedAfterDuration(float speedBoostAmount, float duration)
     {
-        DecoratorData.Instance.AddItemToInventory(decorator.getItem());
+        yield return new WaitForSeconds(duration);
+        _runSpeed -= speedBoostAmount;
     }
+    public void ApplyJumpDecorator(float jumpBoostAmount, float duration)
+    {
+        _jumpForce += jumpBoostAmount;
+        StartCoroutine(RestoreJumpAfterDuration(jumpBoostAmount, duration));
+        Debug.Log("Jump Deco Applied");
+    }
+    private IEnumerator RestoreJumpAfterDuration(float jumpBoostAmount, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _jumpForce -= jumpBoostAmount;
+    }
+    public void ApplyDamageDecorator(int damageBoostAmount, float duration)
+    {
+        _playerDamage += damageBoostAmount;
+        StartCoroutine(RestoreDmgAfterDuration(damageBoostAmount, duration));
+        Debug.Log("Damage Deco Applied");
+    }
+    private IEnumerator RestoreDmgAfterDuration(int damageBoostAmount, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _playerDamage -= damageBoostAmount;
+    }
+    public void ApplyStoredDecorators()
+    {
+        foreach (Decorator decorator in purchasedDecorators)
+        {
+            decorator.ApplyDecorator(this);
+        }
+    }
+
+
+
 
     private bool isPlaying = false; // Variable para controlar si el sonido est� reproduci�ndose o no
 

@@ -4,38 +4,48 @@ using UnityEngine;
 
 public class ConcreteDeco : Decorator
 {
-    private int healthDeco;
+    private int damagedeco;
     public ConcreteDeco(int amount)
     {
-        healthDeco = amount;
+        damagedeco = amount;
     }
     public void ApplyDecorator(PlayerController player)
     {
-        player.ApplyHealthDecorator(healthDeco);
+        player.ApplyDamageDecorator(damagedeco, 10);
     }
 
-    public FlyWeight getItem()
-    {
-        return new FlyWeight(null, null, healthDeco);
-    }
+    
 }
 
 public class SpeedBoostDecorator : Decorator
 {
     private float speedBoostAmount;
 
-    public SpeedBoostDecorator(float amount)
+    public SpeedBoostDecorator(float boostAmount)
     {
-        speedBoostAmount = amount;
+        speedBoostAmount = boostAmount;
     }
 
     public void ApplyDecorator(PlayerController player)
     {
-        player.IncreaseRunSpeedTemporarily(speedBoostAmount, 20f); 
+        player.ApplySpeedDecorator(speedBoostAmount, 10); 
     }
 
-    public FlyWeight getItem()
+  
+}
+public class jumpBoostDecorator : Decorator
+{
+    private float jumpBoostAmount;
+
+    public jumpBoostDecorator(float boostAmount)
     {
-        return new FlyWeight(null, null, (int)speedBoostAmount);
+        jumpBoostAmount= boostAmount;
     }
+
+    public void ApplyDecorator(PlayerController player)
+    {
+        player.ApplyJumpDecorator(jumpBoostAmount, 10);
+    }
+
+
 }

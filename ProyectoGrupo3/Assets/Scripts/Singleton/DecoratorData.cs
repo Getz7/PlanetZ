@@ -25,11 +25,14 @@ public class DecoratorData
     {
         Debug.Log("Se añaden items");
         purchasedItems.Add(item);
+        
     }
 
     public List<FlyWeight> GetPurchasedItems()
     {
+       
         return purchasedItems;
+        
     }
 }
 
