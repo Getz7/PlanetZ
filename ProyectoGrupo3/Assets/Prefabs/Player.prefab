@@ -347,6 +347,19 @@ MonoBehaviour:
   _shieldVulnerabilityDuration: 7
   _activeShieldUI: {fileID: 5114019352715295147, guid: 00e884401a94aab48b292822ba16e214, type: 3}
   _unavailableShieldUI: {fileID: 688886579919371802, guid: 0deb5ffcb40e6a24a82b9bd8521f729f, type: 3}
+  oxigeno1: {fileID: 838029676435519393, guid: 0ffd58a6116b3f94e9afc86df7f128fa, type: 3}
+  oxigeno2: {fileID: 615840781615199368, guid: c091cc6f7a7aa5e498e9924e1affbd25, type: 3}
+  oxigeno3: {fileID: 7969892337842507227, guid: 0a8c1985375480f42877a102793d5337, type: 3}
+  oxigeno4: {fileID: 7600520654637915319, guid: 7e55f6629c5b9464586d8cf9052c9ffd, type: 3}
+  oxigeno5: {fileID: 1579884775106701263, guid: f54296da2a4e92a4cbff5077bfc880dd, type: 3}
+  oxigeno6: {fileID: 1736008961671533959, guid: 4396097bd34588644b65e301f326de3f, type: 3}
+  oxigeno7: {fileID: 7070289304623423290, guid: 54c041381d2aecf4288bc7524d09e855, type: 3}
+  oxigeno8: {fileID: 3307987816346892240, guid: 69c84f93d921a3a4ab2cd5632b310397, type: 3}
+  oxigeno9: {fileID: 3988326157113422839, guid: e692070978776fa4b977ea53e9f3a47a, type: 3}
+  oxigeno10: {fileID: 153711754284277661, guid: 276db095138078f4ba1749f6939045ad, type: 3}
+  oxigeno11: {fileID: 4426371992501341441, guid: 096fc4c561f575a448f1cdd68d0ebf07, type: 3}
+  puntosOxigeno: 45
+  tiempoPuntosOxigeno: 15
   escenaActual: 
   isStomping: 0
 --- !u!95 &5519526613585258283
