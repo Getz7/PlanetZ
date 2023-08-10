@@ -5,5 +5,5 @@ using UnityEngine;
 public interface Decorator 
 {
     void ApplyDecorator(PlayerController player);
-    FlyWeight getItem();
+    
 }
