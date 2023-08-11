@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -92.682}
+  m_AnchoredPosition: {x: 3.8, y: -113.8}
   m_SizeDelta: {x: 210, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82460638
@@ -472,8 +472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3, y: -0.00056744}
-  m_SizeDelta: {x: 480, y: 215.36}
+  m_AnchoredPosition: {x: 0.000016108, y: 0.0000038147}
+  m_SizeDelta: {x: 480, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282173336
 MonoBehaviour:
@@ -617,8 +617,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 0.5}
-  m_SizeDelta: {x: 600, y: 150}
+  m_AnchoredPosition: {x: 0.00051117, y: 1.9}
+  m_SizeDelta: {x: 480, y: 201.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118844597
 MonoBehaviour:
@@ -657,42 +657,21 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f78274a11b4b91249bd2832ee61661fa, type: 3}
-    m_FontSize: 9
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '"W" "A" "S" "D" for movement keys
-
-
-
-    "Spacebar" for jumping
-
-
-
-    "Mouse
-    1" for normal attack
-
-
-
-    "Mouse 2" for fireball attack
-
-
-
-    "E" for tank
-    ability
-
-
-
-    "Esc" for pause/menu
-
-'
+  m_Text: "\"W\" \"A\" \"S\" \"D\" for movement keys\n\n\n\"Spacebar\" for jumping\n\n\n\"Double
+    spacebar\" for stomp ability\n\n\n\"Mouse 1\" for normal attack\n\n\n\"Mouse
+    2\" for fireball attack\n\n\n\"E\" for oxygen tank ability\n\n\n\"Q\" for shield
+    ability \n\n\n\"B\" for access to the shop\n\n\n\"Esc\" for pause/menu\n"
 --- !u!222 &1118844599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -737,8 +716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 75.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.0005188, y: 118.799995}
+  m_SizeDelta: {x: 480, y: 32.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1342273007
 MonoBehaviour:
@@ -782,7 +761,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
