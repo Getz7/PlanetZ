@@ -36,6 +36,19 @@ public class ControladorPuntos : MonoBehaviour
     {
         
     }
+    public bool RestarPuntos(float cantidad)
+    {
+        if (CantidadPuntos >= cantidad)
+        {
+            CantidadPuntos -= cantidad;
+            return true; // Resta exitosa
+        }
+        else
+        {
+            return false; // No hay suficientes puntos
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

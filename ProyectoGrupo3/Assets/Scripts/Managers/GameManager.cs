@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
 
     private int contadorEnemies = 0;
-    private List<Decorator> purchasedDecorators = new List<Decorator>();
+    private List<IDecorator> purchasedDecorators = new List<IDecorator>();
     private PlayerController player;
 
     private void Awake()
@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
         PlayerController player = FindObjectOfType<PlayerController>();
         if (player != null)
         {
-            foreach (Decorator decorator in purchasedDecorators)
+            foreach (IDecorator decorator in purchasedDecorators)
             {
                 decorator.ApplyDecorator(player);
             }
         }
     }
-    public void AddPurchasedDecorator(Decorator decorator)
+    public void AddPurchasedDecorator(IDecorator decorator)
     {
         purchasedDecorators.Add(decorator);
     }

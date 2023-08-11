@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -261,10 +262,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private List<IDecorator> _decorators = new List<IDecorator>();
+
     public void ApplyDecorators(IDecorator decorator)
     {
-        _decorators.Add(decorator);
+        Debug.Log("Se aplica el decorador");
         decorator.ApplyDecorator(this);
     }
     public void ApplyPoints(int pointsToAdd)
@@ -388,9 +389,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private List<Decorator> purchasedDecorators = new List<Decorator>();
+    private List<IDecorator> purchasedDecorators = new List<IDecorator>();
 
-    public void ApplyDecorator(Decorator decorator)
+    public void ApplyDecorator(IDecorator decorator)
     {
         purchasedDecorators.Add(decorator);
         decorator.ApplyDecorator(this);
@@ -433,7 +434,7 @@ public class PlayerController : MonoBehaviour
     }
     public void ApplyStoredDecorators()
     {
-        foreach (Decorator decorator in purchasedDecorators)
+        foreach (IDecorator decorator in purchasedDecorators)
         {
             decorator.ApplyDecorator(this);
         }
@@ -726,5 +727,5 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("SpecialAttack", true);
     }
 
-
+    
 }

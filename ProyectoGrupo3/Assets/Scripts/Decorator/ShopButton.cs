@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ShopButton : MonoBehaviour
 {
-    public Decorator Decorator;
+    public IDecorator Decorator;
     private GameManager gameManager;
     private PlayerController playerController;
 
