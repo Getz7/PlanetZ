@@ -15,6 +15,6 @@ public class ResetLevelData : MonoBehaviour
     {
         // Clear the completed levels data
         PlayerPrefs.DeleteKey("CompletedLevels");
-        Debug.Log("Completed levels data cleared.");
+       
     }
 }

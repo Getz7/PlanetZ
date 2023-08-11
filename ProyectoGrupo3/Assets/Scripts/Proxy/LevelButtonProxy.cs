@@ -33,12 +33,12 @@ public class LevelButtonProxy : MonoBehaviour, ILevelButton
         if (completedLevels.Contains(levelNumber))
         {
             realButton.Enable();
-            Debug.Log("Button Enabled: Level " + levelNumber);
+           
         }
         else
         {
             realButton.Disable();
-            Debug.Log("Button Disabled: Level " + levelNumber);
+           
         }
     }
 

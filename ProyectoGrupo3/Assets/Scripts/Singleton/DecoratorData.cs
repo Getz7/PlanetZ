@@ -23,7 +23,7 @@ public class DecoratorData
 
     public void AddItemToInventory(FlyWeight item)
     {
-        Debug.Log("Se añaden items");
+     
         purchasedItems.Add(item);
         
     }

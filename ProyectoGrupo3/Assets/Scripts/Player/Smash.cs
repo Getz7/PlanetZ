@@ -32,7 +32,7 @@ public class Smash : MonoBehaviour
                     //Paso 1 romper la caja
                     //Paso 2 Reproducir un sonido
                     // Paso 3 reproducir una animacionetsplit
-                    Debug.Log("Smash detectado" + _rig.velocity.y);
+                    
                     for (int j = 0; j < objetosdesactivar.Length; j++)
                     {
                         objetosdesactivar[j].SetActive(false);

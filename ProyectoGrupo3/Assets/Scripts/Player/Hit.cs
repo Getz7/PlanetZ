@@ -18,7 +18,7 @@ public class Hit : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
         {
             enemy.EnemyHurt(FindObjectOfType<PlayerController>().GetDamage());
-            Debug.Log("Impacte un enemigo");
+           
         }
         if (!isSpecial)
         {

@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         _EHealthPoints -= damageAmount;
         if (_EHealthPoints <= 0)
         {
-            Debug.Log("Enemigo Destruido");
+            
             FindObjectOfType<GameManager>().EnemigoDestruido();
 
             Invoke("Desactivar", 0.1f);

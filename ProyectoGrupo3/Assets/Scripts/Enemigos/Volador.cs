@@ -61,7 +61,7 @@ public class Volador : Enemy
 
             //aplicar velocidad al cuerpo rigido para que se mueva en direccion al jugador 
             rg2D.velocity = target.normalized * velocidadMovimiento;
-            Debug.Log("el enemigo esta en distancia de ataque");
+            
             anim.SetBool("Vejugador", true);
         }
 

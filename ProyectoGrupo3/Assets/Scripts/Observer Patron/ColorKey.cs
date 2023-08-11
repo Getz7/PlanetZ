@@ -10,7 +10,7 @@ public class ColorKey : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Jugador tiene la llave");
+            
             PlayerData playerData = other.gameObject.GetComponent<PlayerData>();
             EventManager.Instance.KeyCollected(colorObjeto);
             playerData.AddColorKey(colorObjeto);

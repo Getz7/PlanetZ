@@ -60,7 +60,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No tienes los puntos suficientes");
+           
         }
 
         Resume();
@@ -78,7 +78,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No tienes los puntos suficientes");
+            
         }
 
       Resume();
@@ -97,7 +97,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No tienes los puntos suficientes");
+
         }
         Resume();
       
@@ -116,7 +116,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No tienes los puntos suficientes");
+           
         }
         Resume();
        
@@ -134,7 +134,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No tienes los puntos suficientes");
+           
         }
         Resume();
         

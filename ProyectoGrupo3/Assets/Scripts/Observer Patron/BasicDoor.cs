@@ -18,7 +18,7 @@ public class BasicDoor : MonoBehaviour
     {
         if (!isOpen && other.CompareTag("Player"))
         {
-            Debug.Log("Jugador entro a la zona de la puerta");
+           
             PlayerData playerData = other.GetComponent<PlayerData>();
 
             bool allColorsCollected = true;

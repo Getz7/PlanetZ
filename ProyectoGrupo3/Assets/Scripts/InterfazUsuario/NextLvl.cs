@@ -14,7 +14,7 @@ public class NextLvl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("NextLvl: Trigger entered");
+       
 
         if (other.tag == "Player")
         {
@@ -25,7 +25,7 @@ public class NextLvl : MonoBehaviour
             PlayerDataManager.Instance.UpdatePuntosOxigeno(playerPoints);
 
             lvlManager.MarkLevelCompleted(levelNumber);
-            Debug.Log("NextLvl: Level " + levelNumber + " completed! Switching scene to " + sceneBuildIndex);
+            
 
         
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);

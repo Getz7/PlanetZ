@@ -22,7 +22,7 @@ public class Shop : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
 
         FlyWeight flyweight = itemFlyweights[itemName];
-        Debug.Log("Item: " + flyweight.itemName + ", Price: " + flyweight.itemPrice);
+        
     }
     private void Awake()
     {

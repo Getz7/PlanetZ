@@ -16,7 +16,7 @@ public class MiniBossHP : EnemyHealth
     {
         if (_EHealthPoints <= 0)
         {
-            Debug.Log("Enemigo Destruido");
+           
             FindObjectOfType<GameManager>().EnemigoDestruido();
             if (key != null) Instantiate(key, this.transform.position, Quaternion.identity);
 

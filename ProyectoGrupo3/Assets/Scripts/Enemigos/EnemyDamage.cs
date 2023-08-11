@@ -17,7 +17,7 @@ public class EnemyDamage : MonoBehaviour
         {
             if (player != null)
             {
-                Debug.Log("Enemy collided with player");
+               
                 player.Hurt(enemyDamage);
             }
         }

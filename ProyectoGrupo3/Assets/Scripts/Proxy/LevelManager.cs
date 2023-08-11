@@ -15,13 +15,13 @@ public class LevelManager : MonoBehaviour
     {
         completedLevels.Add(levelNumber);
         SaveCompletedLevelsToPlayerPrefs();
-        Debug.Log("Level " + levelNumber + " marked as completed.");
+       
     }
 
     public bool IsLevelCompleted(int levelNumber)
     {
         bool isCompleted = completedLevels.Contains(levelNumber);
-        Debug.Log("Level " + levelNumber + " is " + (isCompleted ? "completed" : "not completed"));
+        
         return isCompleted;
     }
 

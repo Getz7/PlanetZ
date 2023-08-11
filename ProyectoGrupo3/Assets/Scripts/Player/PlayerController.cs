@@ -265,7 +265,7 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyDecorators(IDecorator decorator)
     {
-        Debug.Log("Se aplica el decorador");
+        
         decorator.ApplyDecorator(this);
     }
     public void ApplyPoints(int pointsToAdd)
@@ -359,7 +359,7 @@ public class PlayerController : MonoBehaviour
 
                 }
 
-            } Debug.Log("Tienes la vida full");
+            } 
         }
        
 
@@ -395,14 +395,14 @@ public class PlayerController : MonoBehaviour
     {
         purchasedDecorators.Add(decorator);
         decorator.ApplyDecorator(this);
-        Debug.Log("Decorator Applied: " + decorator.GetType().Name);
+       
     }
 
     public void ApplySpeedDecorator(float speedBoostAmount, float duration)
     {
         _runSpeed += speedBoostAmount;
         StartCoroutine(RestoreSpeedAfterDuration(speedBoostAmount, duration));
-        Debug.Log("Speed Deco Applied");
+        
     }
 
     private IEnumerator RestoreSpeedAfterDuration(float speedBoostAmount, float duration)
@@ -414,7 +414,7 @@ public class PlayerController : MonoBehaviour
     {
         _jumpForce += jumpBoostAmount;
         StartCoroutine(RestoreJumpAfterDuration(jumpBoostAmount, duration));
-        Debug.Log("Jump Deco Applied");
+     
     }
     private IEnumerator RestoreJumpAfterDuration(float jumpBoostAmount, float duration)
     {
@@ -425,7 +425,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerDamage += damageBoostAmount;
         StartCoroutine(RestoreDmgAfterDuration(damageBoostAmount, duration));
-        Debug.Log("Damage Deco Applied");
+        
     }
     private IEnumerator RestoreDmgAfterDuration(int damageBoostAmount, float duration)
     {
@@ -591,7 +591,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Punch();
-            Debug.Log("Impacte");
+           
         }
 
         if (Input.GetMouseButtonDown(1) && _canSpecial)
@@ -625,7 +625,7 @@ public class PlayerController : MonoBehaviour
     }
     void Flip()
     {
-        Debug.Log("Se ejecuto el flip");
+    
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         _facingRight = !_facingRight;
     }
@@ -634,7 +634,7 @@ public class PlayerController : MonoBehaviour
 
         if (_grounded)
         {
-            Debug.Log("Salto");
+          
             _animator.SetBool("Jump", true);
 
             _rig.velocity = Vector2.up * _jumpForce;
@@ -646,7 +646,7 @@ public class PlayerController : MonoBehaviour
 
     public void JumpSpecial()
     {
-        Debug.Log("Salto especial");
+      
         Jump();
         isStomping = true;
         StartCoroutine(StumpJump());

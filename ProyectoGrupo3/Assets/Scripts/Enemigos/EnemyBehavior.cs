@@ -60,7 +60,7 @@ public class EnemyBehavior : MonoBehaviour
         _EHealthPoints -= damageAmount;
         if (_EHealthPoints <= 0)
         {
-            Debug.Log("Enemigo Destruido");
+            
             FindObjectOfType<GameManager>().EnemigoDestruido();
             //gm.EnemigoDestruido()
         }
@@ -74,7 +74,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log("El elemento que intenta animar no tiene animacion death");
+            
         }
     }
     public void Desactivar()

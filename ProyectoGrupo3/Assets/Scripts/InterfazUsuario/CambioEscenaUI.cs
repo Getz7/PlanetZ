@@ -24,7 +24,7 @@ public class CambioEscenaUI : MonoBehaviour
     {
 
 
-        Debug.Log("Hola,has hecho click en este boton");
+       
         //Sound_Handler.Instance.playsound((int)sonido);
         SceneManager.LoadScene(nombreEscena);
     }

@@ -23,7 +23,7 @@ public class PlayerDataManager : MonoBehaviour
     public void UpdatePuntosOxigeno(int newPuntos)
     {
         puntosOxigeno = newPuntos;
-        Debug.Log("Updated puntosOxigeno: " + puntosOxigeno);
+        
     }
 
     public int GetPuntosOxigeno()
@@ -43,7 +43,6 @@ public class PlayerDataManager : MonoBehaviour
 
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
-        Debug.Log("Scene loaded: " + scene.name);
-        Debug.Log("Current puntosOxigeno: " + puntosOxigeno);
+        
     }
 }

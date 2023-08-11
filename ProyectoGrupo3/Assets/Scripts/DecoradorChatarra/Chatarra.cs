@@ -13,7 +13,7 @@ public class Chatarra : MonoBehaviour
         PlayerController player = other.GetComponent<PlayerController>();
         if (player != null)
         {
-            Debug.Log("_pointsToAdd: " + _pointsToAdd);
+           
             player.ApplyPoints(_pointsToAdd);
             gameObject.SetActive(false);
         }
