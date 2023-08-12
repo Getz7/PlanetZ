@@ -109,12 +109,20 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   facingRight: 0
   timeToChangeDirection: 5
-  timeToSpawnEenemy: 5
+  timeToSpawnEenemy: 2
   speed: 2
+  range: -1.63
   movingRight: 0
   timer: 0
-  spawnTimer: 0
   _enemyFac: {fileID: 0}
+  visionRange: 20
+  attackCooldown: 2
+  colliderDistance: 1.43
+  boxCollider: {fileID: 7974528173228556278}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerPos: {fileID: 0}
 --- !u!114 &707087816877376166
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,7 +33,9 @@ public class EnemyHealth : MonoBehaviour
     }
     public virtual void EnemyHurt(float damageAmount)
     {
+
         _EHealthPoints -= damageAmount;
+        
         if (_EHealthPoints <= 0)
         {
             
