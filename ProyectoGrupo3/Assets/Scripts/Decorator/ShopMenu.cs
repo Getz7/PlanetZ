@@ -13,9 +13,12 @@ public class ShopMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public ControladorPuntos controladorPuntos;
     public FlyWeight flyWeight;
+    void Start()
+    {
+        pauseMenuUI.SetActive(false);
+    }
 
-    
-  
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))

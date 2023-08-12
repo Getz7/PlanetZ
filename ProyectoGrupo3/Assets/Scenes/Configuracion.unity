@@ -670,7 +670,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\"W\" \"A\" \"S\" \"D\" for movement keys\n\n\n\"Spacebar\" for jumping\n\n\n\"Double
     spacebar\" for stomp ability\n\n\n\"Mouse 1\" for normal attack\n\n\n\"Mouse
-    2\" for fireball attack\n\n\n\"E\" for oxygen tank ability\n\n\n\"Q\" for shield
+    2\" for especial Attack\n\n\n\"E\" for oxygen tank ability\n\n\n\"Q\" for shield
     ability \n\n\n\"B\" for access to the shop\n\n\n\"Esc\" for pause/menu\n"
 --- !u!222 &1118844599
 CanvasRenderer:
