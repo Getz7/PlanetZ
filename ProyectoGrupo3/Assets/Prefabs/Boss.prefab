@@ -106,8 +106,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   facingRight: 0
-  timeToChangeDirection: 0
-  timeToSpawnEenemy: 0
+  timeToChangeDirection: 5
+  timeToSpawnEenemy: 5
   speed: 2
   movingRight: 0
   timer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  enemyDamage: 1
+  enemyDamage: 5
 --- !u!114 &-5003434129695746166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  _EHealthPoints: 0
+  _EHealthPoints: 10
 --- !u!95 &6350450614307120766
 Animator:
   serializedVersion: 5

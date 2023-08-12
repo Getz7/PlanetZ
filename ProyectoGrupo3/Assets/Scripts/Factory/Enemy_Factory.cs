@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class Enemy_Factory : MonoBehaviour
+public class Enemy_Factory : MonoBehaviour, Abstract_Factory_Enemy
 {
     //Lista para guardar los enemigos creados
     [SerializeField] private Enemy[] _Enemies;

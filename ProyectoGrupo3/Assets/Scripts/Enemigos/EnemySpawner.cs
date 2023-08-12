@@ -21,16 +21,18 @@ public class EnemySpawner : MonoBehaviour
         //LLamamos a la factoria para crear los enemigos 
         
 
-        _enemyFac.CreateEnemy("Centipede", new Vector2(41, -79));
-        _enemyFac.CreateEnemy("Centipede", new Vector2(101, -101));
-
-        _enemyFac.CreateEnemy("Volador", new Vector2(90, -74));
-        _enemyFac.CreateEnemy("Volador", new Vector2(99, -74));
-        _enemyFac.CreateEnemy("Torreta", new Vector2(101, -78));
-
-
-        _enemyFac.CreateEnemy("BigBloated", new Vector2(15, -80));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[0].transform.position.x, spawns[0].transform.position.y));
+        _enemyFac.CreateEnemy("Volador", new Vector2(spawns[1].transform.position.x, spawns[1].transform.position.y));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[2].transform.position.x, spawns[2].transform.position.y));
+        _enemyFac.CreateEnemy("Volador", new Vector2(spawns[3].transform.position.x, spawns[3].transform.position.y));
+        _enemyFac.CreateEnemy("Volador", new Vector2(spawns[4].transform.position.x, spawns[4].transform.position.y));
+        _enemyFac.CreateEnemy("Chancho", new Vector2(spawns[5].transform.position.x, spawns[5].transform.position.y));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[6].transform.position.x, spawns[6].transform.position.y));
+        _enemyFac.CreateEnemy("Chancho", new Vector2(spawns[7].transform.position.x, spawns[7].transform.position.y));
         
+
+
+
 
     }
 

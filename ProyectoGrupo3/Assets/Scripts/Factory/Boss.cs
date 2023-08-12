@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Boss : Enemy
 
 {
@@ -13,6 +14,7 @@ public class Boss : Enemy
     [SerializeField] private float timer = 0f;
     [SerializeField] private float spawnTimer = 0f;
     [SerializeField] private Enemy_Factory _enemyFac;
+    private Vector2 initialPosition;
     private int moveDirection = 1; // -1 for left, 1 for right
     private SpriteRenderer SR;
 
@@ -23,6 +25,7 @@ public class Boss : Enemy
         SR = GetComponent<SpriteRenderer>();
         UpdateSpriteOrientation();
         _enemyFac = FindObjectOfType<Enemy_Factory>();
+        initialPosition = transform.position;
     }
 
     public override void Move()
@@ -79,7 +82,7 @@ public class Boss : Enemy
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= timeToSpawnEenemy)
         {
-            _enemyFac.CreateEnemy("Centipede", new Vector2(90, -101));
+            _enemyFac.CreateEnemy("Centipede", new Vector2(initialPosition.x - Random.Range(1,20) , (initialPosition.y - 1.4f)));
             spawnTimer = 0f;
         }
     }
