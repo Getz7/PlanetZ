@@ -22,7 +22,7 @@ public class BossDamage : EnemyDamage
         if (hp._EHealthPoints < 5)
         {
 
-            enemyDamage = 8;
+            enemyDamage = 2;
         }
     }
 }
