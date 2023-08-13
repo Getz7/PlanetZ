@@ -11,19 +11,25 @@ public class BigBloated : Enemy
     [SerializeField] private bool movingRight = false;
     private int moveDirection = 1; // -1 for left, 1 for right
     [SerializeField] private float timer = 0f;
-    //[SerializeField] private LanzaPiedras lp;
-    [SerializeField] private LanzaOndas lo;
+    
+    
     [SerializeField] private SpriteRenderer SR;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform throwPoint;
+    [SerializeField] private float throwForce;
+    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private float projectileCooldown;
 
-    [SerializeField] private GameObject proyectil;
-    [SerializeField] private float proyectilspeed;
 
 
     public bool activarBoss;
     private bool atacando = false;
     private Rigidbody2D RB;
-    minibossStates ms = minibossStates.Inactivo;
-    public Transform _punchCheck;
+    public Transform playerPos; // Reference to the player's transform
+    private bool playerInSight = false;
+    private float lastProjectileTime = 0f;
+
+
 
 
     public BigBloated()
@@ -32,20 +38,15 @@ public class BigBloated : Enemy
         
     }
 
-    public enum minibossStates
-    {
-        Persiguiendo,
-        Atacando,
-        Inactivo
-
-    }
+    
 
     private void Start()
     {
         moveDirection = movingRight ? 1 : -1;
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
-       
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
 
@@ -93,84 +94,56 @@ public class BigBloated : Enemy
     protected override void Update()
     {
         Move();
-        switch (ms)
+        // Check if player is in sight
+        playerInSight = Vector2.Distance(transform.position, playerPos.position) <= detectionRange;
+        if (playerInSight)
         {
-            case minibossStates.Persiguiendo:
-              //  activado = true;
-                if (atacando == false)
-                {
-                    atacando = true;
-                    StartCoroutine(Ataque());
-                }
-                break;
+            
+            if(Time.time - lastProjectileTime >= projectileCooldown)
+            {
+                // Throw projectile at the player
+                ThrowProjectile();
+                lastProjectileTime = Time.time;
+            }
+            
         }
+
     }
 
-   
+
 
     public override void TakeDmg()
     {
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void ThrowProjectile()
     {
-        if (activarBoss == false && collision.gameObject.tag == "Player")
-        {
-            activarBoss = true;
-           // activado = true;
-            ms = minibossStates.Persiguiendo;
+        anim.SetBool("move", false); // Stop moving when attacking
+        anim.SetTrigger("attack");   // Trigger attack animation
 
+        // Calculate direction to player
+        Vector2 direction = (playerPos.position - throwPoint.position).normalized;
+
+        // Instantiate and throw projectile
+        GameObject projectile = Instantiate(projectilePrefab, throwPoint.position, Quaternion.identity);
+        Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+        projectileRb.velocity = direction * throwForce;
+
+        // Update sprite orientation based on projectile direction
+        if (direction.x < 0)
+        {
+            SR.flipX = false;
         }
-
-    }
-
-    IEnumerator Ataque()
-    {
-
-        ms = minibossStates.Atacando;
-        yield return new WaitForSeconds(2.5f);
-        
-        if ( lo.dentroDeAreaOndas)
+        else
         {
-           // activado = false;
-            LanzarOndas();
-            anim.SetBool("Lanzar", true);
-
-        }
-        yield return new WaitForSeconds(1f);
-        ms = minibossStates.Persiguiendo;
-        atacando = false;
-        anim.SetBool("Lanzar", false);
-        anim.SetBool("LanzarPiedra", false);
-
-    }
-
-    private void LanzarOndas()
-    {
-        InstanciateProjectile(proyectil, proyectilspeed);
-
-    }
-
-    private void InstanciateProjectile(GameObject projectile, float speed)
-    {
-        if (facingRight)
-        {
-
-            GameObject flechaClone;
-            flechaClone = Instantiate(proyectil, _punchCheck.transform.position, Quaternion.identity);
-            flechaClone.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * proyectilspeed, rg2D.velocity.y);
-            flechaClone.transform.localScale = new Vector3(1, 1, 1);
-
-
-        }
-        else //(attackingRight)
-        {
-            GameObject flechaClone;
-            flechaClone = Instantiate(proyectil, _punchCheck.transform.position, Quaternion.identity);
-            flechaClone.GetComponent<Rigidbody2D>().velocity = new Vector2(-1 * proyectilspeed, rg2D.velocity.y);
-            flechaClone.transform.localScale = new Vector3(-1, 1, 1);
-
+            SR.flipX = true;
         }
     }
+
+
+
+
+
+
 }

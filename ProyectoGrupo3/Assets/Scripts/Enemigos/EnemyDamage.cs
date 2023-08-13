@@ -23,4 +23,9 @@ public class EnemyDamage : MonoBehaviour
         }
 
     }
+
+    public int GetDamage()
+    {
+        return enemyDamage;
+    }
 }
