@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  enemyDamage: 8
+  enemyDamage: 1
 --- !u!50 &3373901793567899187
 Rigidbody2D:
   serializedVersion: 4

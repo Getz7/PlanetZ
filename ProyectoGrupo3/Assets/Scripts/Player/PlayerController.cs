@@ -270,7 +270,11 @@ public class PlayerController : MonoBehaviour
     }
     public void ApplyPoints(int pointsToAdd)
     {
-        puntosOxigeno += pointsToAdd;
+        if (puntosOxigeno < 165)
+        {
+            puntosOxigeno += pointsToAdd;
+        }
+        
     }
 
 
@@ -288,31 +292,43 @@ public class PlayerController : MonoBehaviour
                 {
                     case 150:
                         oxigeno11.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
                         break;
                     case 135:
                         oxigeno10.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
                         break;
                     case 120:
                         oxigeno9.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
                         break;
                     case 105:
                         oxigeno8.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
                         break;
                     case 90:
                         oxigeno7.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
                         break;
                     case 75:
                         oxigeno6.SetActive(false);
+                        _runSpeed = 4;
+                        _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
                         break;
@@ -322,8 +338,6 @@ public class PlayerController : MonoBehaviour
                         _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
-                        _runSpeed = 4;
-                        _HealthPoints = _HealthPoints + 1;
                         break;
                     case 45:
                         oxigeno4.SetActive(false);
@@ -331,7 +345,6 @@ public class PlayerController : MonoBehaviour
                         _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
-
                         break;
                     case 30:
                         oxigeno3.SetActive(false);
@@ -339,7 +352,6 @@ public class PlayerController : MonoBehaviour
                         _HealthPoints = _HealthPoints + 1;
                         velocidadReducida = true;
                         tiempoUso = 15f;
-
                         break;
                     case 15:
                         oxigeno2.SetActive(false);
