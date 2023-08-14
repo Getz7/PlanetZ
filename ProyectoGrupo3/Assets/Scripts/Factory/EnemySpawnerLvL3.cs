@@ -16,7 +16,14 @@ public class EnemySpawnerLvL3 : MonoBehaviour
         _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[3].transform.position.x, spawns[3].transform.position.y));
         _enemyFac.CreateEnemy("Volador", new Vector2(spawns[4].transform.position.x, spawns[4].transform.position.y));
         _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[5].transform.position.x, spawns[5].transform.position.y));
+        _enemyFac.CreateEnemy("Torreta", new Vector2(spawns[6].transform.position.x, spawns[6].transform.position.y));
+        _enemyFac.CreateEnemy("Torreta", new Vector2(spawns[7].transform.position.x, spawns[7].transform.position.y));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[8].transform.position.x, spawns[8].transform.position.y));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[9].transform.position.x, spawns[9].transform.position.y));
+        _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[10].transform.position.x, spawns[10].transform.position.y));
+        _enemyFac.CreateEnemy("Volador", new Vector2(spawns[11].transform.position.x, spawns[11].transform.position.y));
+
     }
 
-   
+
 }

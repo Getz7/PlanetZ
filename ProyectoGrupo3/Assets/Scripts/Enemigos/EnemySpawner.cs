@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
         _enemyFac.CreateEnemy("Chancho", new Vector2(spawns[5].transform.position.x, spawns[5].transform.position.y));
         _enemyFac.CreateEnemy("Centipede", new Vector2(spawns[6].transform.position.x, spawns[6].transform.position.y));
         _enemyFac.CreateEnemy("Chancho", new Vector2(spawns[7].transform.position.x, spawns[7].transform.position.y));
+        _enemyFac.CreateEnemy("Volador", new Vector2(spawns[8].transform.position.x, spawns[8].transform.position.y));
         
 
 
