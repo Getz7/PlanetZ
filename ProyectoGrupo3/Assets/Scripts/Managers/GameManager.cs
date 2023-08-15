@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
     }
     public void EnemigoDestruido()
     {
-        // Resto de tu código para contar enemigos...
-
+        
+        contadorEnemies++;
         if (contadorEnemies >= 5)
         {
             player.ActiveSpecial(true);
