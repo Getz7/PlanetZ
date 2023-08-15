@@ -17,7 +17,8 @@ using UnityEngine.SceneManagement;
         
         void Start()
         {
-            pauseMenuUI.SetActive(false);
+        controladorPuntos = FindObjectOfType<ControladorPuntos>();
+        pauseMenuUI.SetActive(false);
             iflyWeightFactory = new IFlyWeightFactory();
 
 
@@ -26,6 +27,7 @@ using UnityEngine.SceneManagement;
 
         void Update()
         {
+        
             if (Input.GetKeyDown(KeyCode.B))
             {
                 if (GameIsPaused)

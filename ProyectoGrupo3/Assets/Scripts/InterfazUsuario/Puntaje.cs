@@ -15,14 +15,14 @@ public class Puntaje : MonoBehaviour
     {
 
         _TexMesh = GetComponent<TextMeshProUGUI>();
-        this.ActualizarPuntos(ControladorPuntos.Instancia.CantidadPuntos);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-         _TexMesh.text = "Puntos: " + _Puntos.ToString ("0");
+        this.ActualizarPuntos(ControladorPuntos.Instancia.CantidadPuntos);
+        _TexMesh.text = "Puntos: " + _Puntos.ToString ("0");
 
     }
 
