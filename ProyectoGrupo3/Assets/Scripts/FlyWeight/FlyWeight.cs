@@ -8,8 +8,8 @@ public class FlyWeight
    
     public int itemPrice;
 
-    // Constructor
-    public FlyWeight(string name, Sprite sprite, int price)
+  
+    public FlyWeight(string name, int price)
     {
         itemName = name;
       

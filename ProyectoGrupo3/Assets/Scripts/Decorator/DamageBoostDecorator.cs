@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageBoostDecorator : IDecorator
 {
-  
+   
    
    
         private int damagedeco;
@@ -14,6 +14,7 @@ public class DamageBoostDecorator : IDecorator
         }
         public void ApplyDecorator(PlayerController player)
         {
+       
             player.ApplyDamageDecorator(damagedeco, 10);
         }
 
