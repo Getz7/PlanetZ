@@ -32,7 +32,7 @@ public class Torreta : Enemy
                       );
         anim.SetFloat("Speed", Mathf.Abs(rg2D.velocity.magnitude));
     }
-    void RangeCheck()
+    private void RangeCheck()
     {
 
         distance = Vector3.Distance(transform.position, target);
@@ -75,8 +75,18 @@ public class Torreta : Enemy
 
     }
 
-    public override void TakeDmg()
+    public override void TakeDmg(float dmgAmount)
     {
-        
+        Health -= dmgAmount;
+        if (Health <= 0)
+        {
+            FindObjectOfType<GameManager>().EnemigoDestruido();
+            Invoke("Die", 0.1f);
+        }
+    }
+
+    public override void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 }

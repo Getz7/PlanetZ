@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BigBloated : Enemy
 {
-
-    [SerializeField] private float movespeed = 2f;
-    [SerializeField] private float timeToChangeDirection = 2f;
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private bool movingRight = false;
     private int moveDirection = 1; // -1 for left, 1 for right
     [SerializeField] private float timer = 0f;
     
@@ -19,6 +14,10 @@ public class BigBloated : Enemy
     [SerializeField] private float throwForce;
     [SerializeField] private float detectionRange = 5f;
     [SerializeField] private float projectileCooldown;
+
+    [SerializeField] private GameObject key;
+    
+    private bool hasDroppedKey = false;
 
 
 
@@ -38,9 +37,9 @@ public class BigBloated : Enemy
         
     }
 
-    
 
-    private void Start()
+
+    protected override void Start()
     {
         moveDirection = movingRight ? 1 : -1;
         RB = GetComponent<Rigidbody2D>();
@@ -66,7 +65,7 @@ public class BigBloated : Enemy
     {
         anim.SetBool("move", true);
 
-        transform.Translate(moveDirection * Vector2.right * speed * Time.deltaTime);
+        transform.Translate(moveDirection * Vector2.right * MoveSpeed * Time.deltaTime);
 
         timer += Time.deltaTime;
 
@@ -112,9 +111,14 @@ public class BigBloated : Enemy
 
 
 
-    public override void TakeDmg()
+    public override void TakeDmg(float dmgAmount)
     {
-        
+        Health -= dmgAmount;
+        if (Health <= 0)
+        {
+            FindObjectOfType<GameManager>().EnemigoDestruido();
+            Invoke("Die", 0.1f);
+        }
     }
 
     private void ThrowProjectile()
@@ -141,9 +145,13 @@ public class BigBloated : Enemy
         }
     }
 
-
-
-
-
-
+    public override void Die()
+    {
+        this.gameObject.SetActive(false);
+        
+            hasDroppedKey = true;
+            FindObjectOfType<GameManager>().EnemigoDestruido();
+            if (key != null) Instantiate(key, this.transform.position, Quaternion.identity);
+        
+    }
 }

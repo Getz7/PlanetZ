@@ -102,7 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61122699e1ff75c4997d864b309ccf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 0
+  Damage: 5
+  MoveSpeed: 0
   _type: Chancho
+  movingRight: 0
+  timeToChangeDirection: 0
   rg2D: {fileID: 0}
   player: {fileID: 0}
   anim: {fileID: 0}

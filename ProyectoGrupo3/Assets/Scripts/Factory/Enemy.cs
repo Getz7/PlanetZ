@@ -5,9 +5,14 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     // common propperties
-   
 
-    [SerializeField] private string _type;
+
+    [SerializeField] protected float Health;
+    [SerializeField] protected float Damage;
+    [SerializeField] protected int MoveSpeed;
+    [SerializeField] protected string _type;
+    [SerializeField] protected bool movingRight = false;
+    [SerializeField] protected float timeToChangeDirection;
     public Rigidbody2D rg2D;
     protected GameManager gm;
     public PlayerController player;
@@ -70,19 +75,17 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public abstract void Move();
-   
+
 
     public abstract void Attack();
 
 
 
-    public abstract void TakeDmg();
+    public abstract void TakeDmg(float dmgAmount);
+
+
+    public abstract void Die();
     
-
-    protected void Die()
-    {
-
-    }
    
     
 }

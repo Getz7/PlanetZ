@@ -14,9 +14,14 @@ public class Volador : Enemy
 
     }
 
-    public override void TakeDmg()
+    public override void TakeDmg(float dmgAmount)
     {
-
+        Health -= dmgAmount;
+        if (Health <= 0)
+        {
+            FindObjectOfType<GameManager>().EnemigoDestruido();
+            Invoke("Die", 0.1f);
+        }
     }
 
     public int damage = 1;
@@ -65,5 +70,10 @@ public class Volador : Enemy
             anim.SetBool("Vejugador", true);
         }
 
+    }
+
+    public override void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 }

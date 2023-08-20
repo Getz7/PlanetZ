@@ -371,7 +371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300af8ed0d01a2f418321f21349d6d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 3
+  Damage: 3
+  MoveSpeed: 0
   _type: Torreta
+  movingRight: 0
+  timeToChangeDirection: 0
   rg2D: {fileID: 8871572595411855613}
   player: {fileID: 3477893809491926973, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
   anim: {fileID: 5432032313379614407}

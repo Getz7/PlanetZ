@@ -7,12 +7,9 @@ public class Boss : Enemy
 
 {
 
-    [SerializeField] private float timeToChangeDirection = 0f;
-    [SerializeField] private float timeToSpawnEenemy = 0f;
-    [SerializeField] public float speed = 2f;
     
-    [SerializeField] private bool movingRight = false;
-    [SerializeField] private float timer = 0f;
+    [SerializeField] private float timeToSpawnEenemy = 0f;
+    
     [SerializeField] private Enemy_Factory _enemyFac;
     [SerializeField] private float visionRange = 10f; // The range at which the player should trigger spawning
     
@@ -23,12 +20,13 @@ public class Boss : Enemy
     private int maxEnemiesToSpawn = 5;
     private int enemiesSpawned = 0; // Counter for spawned enemies
     private float spawnTimer = 0f;
-    
-    
-    
+    private float timer = 0f;
 
 
-    void Start()
+
+
+
+    protected override void Start()
     {
         moveDirection = movingRight ? 1 : -1;
         SR = GetComponent<SpriteRenderer>();
@@ -43,7 +41,7 @@ public class Boss : Enemy
     {
         anim.SetBool("move", true);
 
-        transform.Translate(moveDirection * Vector2.right * speed * Time.deltaTime);
+        transform.Translate(moveDirection * Vector2.right * MoveSpeed * Time.deltaTime);
 
         timer += Time.deltaTime;
 
@@ -56,16 +54,21 @@ public class Boss : Enemy
         }
     }
 
-    public override void TakeDmg()
+    public override void TakeDmg(float dmgAmount)
     {
-        
+        Health -= dmgAmount;
+        if (Health <= 0)
+        {
+            FindObjectOfType<GameManager>().EnemigoDestruido();
+            Invoke("Die", 0.1f);
+        }
     }
 
     // Start is called before the first frame update
 
 
     // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
         
         
@@ -83,7 +86,7 @@ public class Boss : Enemy
 
     
 
-    public void UpdateSpriteOrientation()
+    private void UpdateSpriteOrientation()
     {
         // Flip the sprite along the X-axis if moving left
         if (moveDirection < 0)
@@ -100,7 +103,7 @@ public class Boss : Enemy
         throw new System.NotImplementedException();
     }
 
-    public void SpawnEnemy()
+    private void SpawnEnemy()
     {
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= timeToSpawnEenemy)
@@ -112,5 +115,10 @@ public class Boss : Enemy
            
             
         }
+    }
+
+    public override void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 }

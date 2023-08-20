@@ -61,13 +61,13 @@ public class Chanchito : Enemy
         }
     }
 
-    public override void TakeDmg()
+    public override void TakeDmg(float dmgAmount)
     {
         throw new System.NotImplementedException();
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
 
         RB = GetComponent<Rigidbody2D>();
@@ -76,7 +76,7 @@ public class Chanchito : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         base.Awake();
         if (isFalling)
@@ -99,5 +99,10 @@ public class Chanchito : Enemy
                 resetCoroutine = StartCoroutine(ResetPosition());
             }
         }
+    }
+
+    public override void Die()
+    {
+        throw new System.NotImplementedException();
     }
 }

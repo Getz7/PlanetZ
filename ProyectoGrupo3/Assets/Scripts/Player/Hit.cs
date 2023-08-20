@@ -15,9 +15,9 @@ public class Hit : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            enemy.EnemyHurt(FindObjectOfType<PlayerController>().GetDamage());
+            enemy.TakeDmg(FindObjectOfType<PlayerController>().GetDamage());
            
         }
         if (!isSpecial)

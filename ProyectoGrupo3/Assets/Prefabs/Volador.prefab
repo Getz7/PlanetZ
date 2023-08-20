@@ -167,7 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aba53652c8cd6a48b617fac79f695f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 1
+  Damage: 2
+  MoveSpeed: 0
   _type: Volador
+  movingRight: 0
+  timeToChangeDirection: 0
   rg2D: {fileID: 5428807238372609913}
   player: {fileID: 0}
   anim: {fileID: 0}

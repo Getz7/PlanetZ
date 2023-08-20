@@ -5,12 +5,14 @@ using UnityEngine;
 public class BossHP : EnemyHealth
 {
     private Boss b;
+    private Enemy _enemy;
     [SerializeField] private GameObject key;
     private bool hasDroppedKey = false;
     // Start is called before the first frame update
     void Start()
     {
         b = FindObjectOfType<Boss>();
+        _enemy = FindObjectOfType<Enemy>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class BossHP : EnemyHealth
     {
         if (_EHealthPoints < 8)
         {
-            b.speed = 4;
+            //b.MoveSpeed = 4;
         }
        
     }

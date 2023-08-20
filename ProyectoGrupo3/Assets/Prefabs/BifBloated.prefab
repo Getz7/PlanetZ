@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: -6615316765531144381}
   - component: {fileID: 1560582829350507767}
   - component: {fileID: -3995040491273959826}
-  - component: {fileID: 8766501459447796081}
   m_Layer: 0
   m_Name: BifBloated
   m_TagString: Untagged
@@ -134,16 +133,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2e2c77d219659479bd528c24bcb855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 5
+  Damage: 3
+  MoveSpeed: 2
   _type: BigBloated
+  movingRight: 0
+  timeToChangeDirection: 3
   rg2D: {fileID: 0}
   player: {fileID: 0}
   anim: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   facingRight: 0
-  movespeed: 2
-  timeToChangeDirection: 3
-  speed: 2
-  movingRight: 0
   timer: 0
   SR: {fileID: 0}
   projectilePrefab: {fileID: 6950540356462950835, guid: 30f5fca55250ce44fb030d781ee201f3, type: 3}
@@ -151,6 +151,7 @@ MonoBehaviour:
   throwForce: 20
   detectionRange: 5
   projectileCooldown: 2
+  key: {fileID: 6389831185633756836, guid: 3e2869d41bee43444bbcc340c88e759b, type: 3}
   activarBoss: 0
   playerPos: {fileID: 0}
 --- !u!95 &-8983300376284675125
@@ -235,18 +236,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0567703, y: 2.2415848}
   m_EdgeRadius: 0
---- !u!114 &8766501459447796081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6654792382327272231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5787359443fb1974e812cb5726ad303c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  _EHealthPoints: 5
-  key: {fileID: 6389831185633756836, guid: 3e2869d41bee43444bbcc340c88e759b, type: 3}

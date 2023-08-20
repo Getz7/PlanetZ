@@ -5,14 +5,13 @@ using UnityEngine;
 public class Centipede : Enemy
 {
 
-    [SerializeField] private float movespeed = 3f;
-    [SerializeField] private float timeToChangeDirection = 2f;
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private bool movingRight = false;
+    
+
     private int moveDirection = 1; // -1 for left, 1 for right
-    [SerializeField] private float timer = 0f;
+    private float timer = 0f;
     private Rigidbody2D RB;
-     private SpriteRenderer SR;
+    private SpriteRenderer SR;
+    private BoxCollider2D box;
 
 
     public Centipede()
@@ -27,22 +26,23 @@ public class Centipede : Enemy
 
     }
 
-    private void Start()
+    protected override void Start()
     {
         // Adjust the initial movement direction based on 'startMovingRight' variable
         moveDirection = movingRight ? 1 : -1;
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
+        box = GetComponent<BoxCollider2D>();
       
 
     }
 
 
 
-    
 
 
-    private void Update()
+
+    protected override void  Update()
     {
         Move();
     }
@@ -56,7 +56,7 @@ public class Centipede : Enemy
 
         anim.SetBool("move", true);
 
-        transform.Translate(moveDirection * Vector2.right * speed * Time.deltaTime);
+        transform.Translate(moveDirection * Vector2.right * MoveSpeed * Time.deltaTime);
 
         timer += Time.deltaTime;
 
@@ -82,8 +82,18 @@ public class Centipede : Enemy
         }
     }
 
-    public override void TakeDmg()
+    public override void TakeDmg(float dmgAmount)
     {
-        
+        Health -= dmgAmount;
+        if(Health <= 0)
+        {
+            FindObjectOfType<GameManager>().EnemigoDestruido();
+            Invoke("Die", 0.1f);
+        }
+    }
+
+    public override void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 }
