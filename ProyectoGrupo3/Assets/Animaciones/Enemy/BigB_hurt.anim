@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Centipede_dead
+  m_Name: BigB_hurt
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1198864943, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - time: 0.16666667
-      value: {fileID: 1930512429, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - time: 0.33333334
-      value: {fileID: 1812837795, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - time: 0.5
-      value: {fileID: -1119986960, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+      value: {fileID: 1487465531, guid: 3001bc3a46ed04f4899af9bb6de52f72, type: 3}
+    - time: 0.083333336
+      value: {fileID: 492635647, guid: 3001bc3a46ed04f4899af9bb6de52f72, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,21 +42,19 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1198864943, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - {fileID: 1930512429, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - {fileID: 1812837795, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - {fileID: -1119986960, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+    - {fileID: 1487465531, guid: 3001bc3a46ed04f4899af9bb6de52f72, type: 3}
+    - {fileID: 492635647, guid: 3001bc3a46ed04f4899af9bb6de52f72, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0

@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 8
   Damage: 2
-  MoveSpeed: 2
+  MoveSpeed: 1
   _type: Boss
   movingRight: 0
   timeToChangeDirection: 5

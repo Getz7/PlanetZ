@@ -22,6 +22,7 @@ public class Boss : Enemy
     private float spawnTimer = 0f;
     private float timer = 0f;
     private bool hasDroppedKey = false;
+    private BoxCollider2D box;
 
 
 
@@ -35,7 +36,8 @@ public class Boss : Enemy
         _enemyFac = FindObjectOfType<Enemy_Factory>();
         initialPosition = transform.position;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        box = GetComponent<BoxCollider2D>();
+
     }
 
     public override void Move()
@@ -58,6 +60,7 @@ public class Boss : Enemy
     public override void TakeDmg(float dmgAmount)
     {
         Health -= dmgAmount;
+        anim.SetTrigger("hurt");
         if (Health <= 0 && !hasDroppedKey)
         {
             hasDroppedKey = true;
@@ -136,7 +139,10 @@ public class Boss : Enemy
 
     public override void Die()
     {
-        this.gameObject.SetActive(false);
+        anim.SetTrigger("die");
+        // this.gameObject.SetActive(false);
+        GetComponent<Boss>().enabled = false;
+        box.enabled = false;
     }
 
     public float GetDamage()

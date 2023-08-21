@@ -109,7 +109,8 @@ public class Centipede : Enemy
     {
         anim.SetTrigger("die");
         // this.gameObject.SetActive(false);
-        GetComponent<Enemy>().enabled = false;
+        GetComponent<Centipede>().enabled = false;
+        box.enabled = false;
     }
 
     public float GetDamage()

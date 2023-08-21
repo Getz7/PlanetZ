@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Centipede_dead
+  m_Name: BigB_ded
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1198864943, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+      value: {fileID: -9633502, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
     - time: 0.16666667
-      value: {fileID: 1930512429, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+      value: {fileID: 830890104, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
     - time: 0.33333334
-      value: {fileID: 1812837795, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+      value: {fileID: -1420486228, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
     - time: 0.5
-      value: {fileID: -1119986960, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+      value: {fileID: -996420580, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1198864943, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - {fileID: 1930512429, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - {fileID: 1812837795, guid: b8ab050c802b3404592543dff9d98963, type: 3}
-    - {fileID: -1119986960, guid: b8ab050c802b3404592543dff9d98963, type: 3}
+    - {fileID: -9633502, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
+    - {fileID: 830890104, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
+    - {fileID: -1420486228, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
+    - {fileID: -996420580, guid: e95bc52a8e12d9047bdc1f27c7bcdc20, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

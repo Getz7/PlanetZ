@@ -5,14 +5,14 @@ using UnityEngine;
 public class BigBloated : Enemy
 {
     private int moveDirection = 1; // -1 for left, 1 for right
-    [SerializeField] private float timer = 0f;
+    private float timer = 0f;
     
     
     [SerializeField] private SpriteRenderer SR;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform throwPoint;
     [SerializeField] private float throwForce;
-    [SerializeField] private float detectionRange = 5f;
+    private float detectionRange = 5f;
     [SerializeField] private float projectileCooldown;
 
     [SerializeField] private GameObject key;
@@ -27,6 +27,7 @@ public class BigBloated : Enemy
     public Transform playerPos; // Reference to the player's transform
     private bool playerInSight = false;
     private float lastProjectileTime = 0f;
+    private BoxCollider2D box;
 
 
 
@@ -45,6 +46,7 @@ public class BigBloated : Enemy
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        box = GetComponent<BoxCollider2D>();
 
     }
 
@@ -114,6 +116,7 @@ public class BigBloated : Enemy
     public override void TakeDmg(float dmgAmount)
     {
         Health -= dmgAmount;
+        anim.SetTrigger("hurt");
         if (Health <= 0)
         {
             FindObjectOfType<GameManager>().EnemigoDestruido();
@@ -162,9 +165,13 @@ public class BigBloated : Enemy
 
     public override void Die()
     {
-        this.gameObject.SetActive(false);
-        
-            hasDroppedKey = true;
+
+        anim.SetTrigger("die");
+        //this.gameObject.SetActive(false);
+        GetComponent<BigBloated>().enabled = false;
+        box.enabled = false;
+
+        hasDroppedKey = true;
             FindObjectOfType<GameManager>().EnemigoDestruido();
             if (key != null) Instantiate(key, this.transform.position, Quaternion.identity);
         
