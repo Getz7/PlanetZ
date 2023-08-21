@@ -76,4 +76,20 @@ public class Volador : Enemy
     {
         this.gameObject.SetActive(false);
     }
+    public float GetDamage()
+    {
+        return Damage;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (player != null)
+            {
+
+                player.Hurt((int)GetDamage());
+            }
+        }
+
+    }
 }

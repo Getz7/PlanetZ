@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -1965727548080410542}
   - component: {fileID: -8138551159114013907}
   - component: {fileID: 4128440069222303391}
-  - component: {fileID: -7162282758955950242}
   m_Layer: 8
   m_Name: Centipede
   m_TagString: Enemy
@@ -170,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 3
-  Damage: 1
+  Damage: 2
   MoveSpeed: 3
   _type: Centipede
   movingRight: 0
@@ -180,17 +179,3 @@ MonoBehaviour:
   anim: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   facingRight: 0
---- !u!114 &-7162282758955950242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8841041065240404661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93152a28c6235b149adb0ef2be2eb14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemyDamage: 1

@@ -110,7 +110,7 @@ public class BigBloated : Enemy
     }
 
 
-
+    //Take dmage from player
     public override void TakeDmg(float dmgAmount)
     {
         Health -= dmgAmount;
@@ -119,6 +119,21 @@ public class BigBloated : Enemy
             FindObjectOfType<GameManager>().EnemigoDestruido();
             Invoke("Die", 0.1f);
         }
+    }
+
+
+    //Deal damage to PLayer
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (player != null)
+            {
+
+                player.Hurt((int)GetDamage());
+            }
+        }
+
     }
 
     private void ThrowProjectile()
@@ -153,5 +168,10 @@ public class BigBloated : Enemy
             FindObjectOfType<GameManager>().EnemigoDestruido();
             if (key != null) Instantiate(key, this.transform.position, Quaternion.identity);
         
+    }
+
+    public float GetDamage()
+    {
+        return Damage;
     }
 }

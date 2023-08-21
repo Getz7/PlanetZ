@@ -12,7 +12,7 @@ public class Boss : Enemy
     
     [SerializeField] private Enemy_Factory _enemyFac;
     [SerializeField] private float visionRange = 10f; // The range at which the player should trigger spawning
-    
+    [SerializeField] private GameObject key;
     private Vector2 initialPosition;
     private int moveDirection = 1; // -1 for left, 1 for right
     private SpriteRenderer SR;
@@ -21,6 +21,7 @@ public class Boss : Enemy
     private int enemiesSpawned = 0; // Counter for spawned enemies
     private float spawnTimer = 0f;
     private float timer = 0f;
+    private bool hasDroppedKey = false;
 
 
 
@@ -57,10 +58,12 @@ public class Boss : Enemy
     public override void TakeDmg(float dmgAmount)
     {
         Health -= dmgAmount;
-        if (Health <= 0)
+        if (Health <= 0 && !hasDroppedKey)
         {
+            hasDroppedKey = true;
             FindObjectOfType<GameManager>().EnemigoDestruido();
             Invoke("Die", 0.1f);
+            if (key != null) Instantiate(key, this.transform.position, Quaternion.identity);
         }
     }
 
@@ -82,6 +85,7 @@ public class Boss : Enemy
         {
             SpawnEnemy();
         }
+        speedUp();
     }
 
     
@@ -100,7 +104,20 @@ public class Boss : Enemy
     }
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+       
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (player != null)
+            {
+
+                player.Hurt((int)GetDamage());
+            }
+        }
+
     }
 
     private void SpawnEnemy()
@@ -120,5 +137,18 @@ public class Boss : Enemy
     public override void Die()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public float GetDamage()
+    {
+        return Damage;
+    }
+    public void speedUp()
+    {
+        if (Health < 8)
+        {
+            MoveSpeed = 4;
+        }
+
     }
 }

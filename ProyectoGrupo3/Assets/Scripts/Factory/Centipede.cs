@@ -50,6 +50,18 @@ public class Centipede : Enemy
     {
 
     }
+    private  void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (player != null)
+            {
+
+                player.Hurt((int)GetDamage());
+            }
+        }
+
+    }
 
     public override void Move() 
     {
@@ -85,6 +97,7 @@ public class Centipede : Enemy
     public override void TakeDmg(float dmgAmount)
     {
         Health -= dmgAmount;
+        anim.SetTrigger("hurt");
         if(Health <= 0)
         {
             FindObjectOfType<GameManager>().EnemigoDestruido();
@@ -94,6 +107,13 @@ public class Centipede : Enemy
 
     public override void Die()
     {
-        this.gameObject.SetActive(false);
+        anim.SetTrigger("die");
+        // this.gameObject.SetActive(false);
+        GetComponent<Enemy>().enabled = false;
+    }
+
+    public float GetDamage()
+    {
+        return Damage;
     }
 }

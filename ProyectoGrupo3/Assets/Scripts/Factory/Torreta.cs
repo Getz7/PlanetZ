@@ -89,4 +89,20 @@ public class Torreta : Enemy
     {
         this.gameObject.SetActive(false);
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (player != null)
+            {
+
+                player.Hurt((int)GetDamage());
+            }
+        }
+
+    }
+    public float GetDamage()
+    {
+        return Damage;
+    }
 }

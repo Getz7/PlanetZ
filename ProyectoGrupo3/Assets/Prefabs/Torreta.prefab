@@ -184,8 +184,6 @@ GameObject:
   - component: {fileID: 3991422347953185461}
   - component: {fileID: 8871572595411855613}
   - component: {fileID: 5432032313379614407}
-  - component: {fileID: 2582170138956108074}
-  - component: {fileID: 311325876453893048}
   - component: {fileID: 2022762243913326094}
   m_Layer: 8
   m_Name: Torreta
@@ -331,34 +329,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2582170138956108074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8249430309402624716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93152a28c6235b149adb0ef2be2eb14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3477893809491926973, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
-  enemyDamage: 1
---- !u!114 &311325876453893048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8249430309402624716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd5fbd3f4f0604b4dad579bf044a6e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3477893809491926973, guid: 657eac7059e9e774bbed009b909dbf32, type: 3}
-  _EHealthPoints: 1
 --- !u!114 &2022762243913326094
 MonoBehaviour:
   m_ObjectHideFlags: 0
