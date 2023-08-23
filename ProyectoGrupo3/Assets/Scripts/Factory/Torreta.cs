@@ -12,9 +12,14 @@ public class Torreta : Enemy
     public float flechaTimer;
     public GameObject flecha;
     public UnityEngine.Transform shootPointRight;
+    private BoxCollider2D box;
     public override void Attack()
     {
 
+    }
+    protected override void Start()
+    {
+        box = GetComponent<BoxCollider2D>();
     }
 
     protected override void Awake()
@@ -66,7 +71,9 @@ public class Torreta : Enemy
                 flechaTimer = 0;
                 anim.SetBool("Attacking", true);
             }
+            
         }
+        
     }
 
 
@@ -78,6 +85,7 @@ public class Torreta : Enemy
     public override void TakeDmg(float dmgAmount)
     {
         Health -= dmgAmount;
+        anim.SetTrigger("hurt");
         if (Health <= 0)
         {
             FindObjectOfType<GameManager>().EnemigoDestruido();
@@ -87,7 +95,12 @@ public class Torreta : Enemy
 
     public override void Die()
     {
-        this.gameObject.SetActive(false);
+        anim.SetTrigger("die");
+        // this.gameObject.SetActive(false);
+        GetComponent<Torreta>().enabled = false;
+        
+        box.enabled = false;
+        
     }
     private void OnCollisionStay2D(Collision2D collision)
     {

@@ -707,13 +707,22 @@ public class PlayerController : MonoBehaviour
             if (!_shieldActive)
             {
                 _canBehurt = false;
+                _animator.SetTrigger("hurt");
                 _HealthPoints -= damage;
+                
                 StartCoroutine(Invulnerability());
 
                 if (_HealthPoints <= 0)
                 {
-                    this.gameObject.SetActive(false);
+
+                    
+                    _animator.SetTrigger("die");
+                    GetComponent<PlayerController>().enabled = false;
+                    
+                    //this.gameObject.SetActive(false);
+
                     SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+                        
                 }
                 else
                 {
