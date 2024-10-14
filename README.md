@@ -1,5 +1,7 @@
 # PLANET Z
-2D Platformer video game.
+## 2D Platformer video game.
+
+
 ●	Implemented and leveraged nine key design patterns to enhance the project's software architecture, showcasing a strategic and effective approach to system development.
 ●	The project was developed in Unity.
 ●	 Autosaving for each level
